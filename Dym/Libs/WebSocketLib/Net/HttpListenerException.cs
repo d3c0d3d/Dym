@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 
-namespace ModuleFramework.Libs.WebSocketLib.Net
+namespace Dym.Libs.WebSocketLib.Net
 {
     /// <summary>
     /// The exception that is thrown when a <see cref="HttpListener"/> gets an error

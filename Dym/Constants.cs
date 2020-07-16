@@ -1,8 +1,9 @@
 ﻿using System;
 using System.IO;
-using ModuleFramework.Extensions;
+using Dym.Util;
+using Dym.Extensions;
 
-namespace ModuleFramework
+namespace Dym
 {
     public class Constants
     {
@@ -11,7 +12,7 @@ namespace ModuleFramework
         /// </summary>
         internal static byte[] ModuleUid = new byte[] { 0x85, 0xd1, 0x26, 0xf3, 0xe7, 0xde, 0x39, 0x45, 0x86, 0xc0, 0x94, 0x8d, 0x7b, 0xa7, 0xb2, 0x23 };
         internal static string ModuleFriendlyName = $"{nameof(ModuleLoader)}";
-        internal static Version ModuleVersion = new Version(2019,11,15,0);
+        internal static Version ModuleVersion = new Version(2019, 11, 15, 0);
         internal static string ModuleStorageConnStr = CONNPART.ToStr() + Path.Combine(Utilities.AssemblyDirectory, "_ms");
 
         // password=dbl33tdb;filename=
@@ -34,7 +35,7 @@ namespace ModuleFramework
                     c = (byte)~c;
                     c -= 0xe3;
                     c ^= (byte)m;
-                    c = (byte)((c >> 0x1) | (c << 0x7));
+                    c = (byte)(c >> 0x1 | c << 0x7);
                     c = (byte)-c;
                     c = (byte)~c;
                     c ^= 0x9d;
@@ -71,15 +72,15 @@ namespace ModuleFramework
                     c ^= (byte)m;
                     c -= (byte)m;
                     c = (byte)-c;
-                    c = (byte)((c >> 0x2) | (c << 0x6));
+                    c = (byte)(c >> 0x2 | c << 0x6);
                     c -= (byte)m;
                     c = (byte)~c;
                     c -= 0xc3;
-                    c = (byte)((c >> 0x6) | (c << 0x2));
+                    c = (byte)(c >> 0x6 | c << 0x2);
                     c = (byte)-c;
-                    c = (byte)((c >> 0x5) | (c << 0x3));
+                    c = (byte)(c >> 0x5 | c << 0x3);
                     c = (byte)-c;
-                    c = (byte)((c >> 0x6) | (c << 0x2));
+                    c = (byte)(c >> 0x6 | c << 0x2);
                     c += (byte)m;
                     nid[m] = c;
                 }
@@ -111,12 +112,12 @@ namespace ModuleFramework
                     c ^= 0x66;
                     c += (byte)m;
                     c ^= (byte)m;
-                    c = (byte)((c >> 0x7) | (c << 0x1));
+                    c = (byte)(c >> 0x7 | c << 0x1);
                     c ^= 0x68;
-                    c = (byte)((c >> 0x3) | (c << 0x5));
+                    c = (byte)(c >> 0x3 | c << 0x5);
                     c ^= (byte)m;
                     c -= 0x68;
-                    c = (byte)((c >> 0x1) | (c << 0x7));
+                    c = (byte)(c >> 0x1 | c << 0x7);
                     mfl[m] = c;
                 }
                 return mfl;

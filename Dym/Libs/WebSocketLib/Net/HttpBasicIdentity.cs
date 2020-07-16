@@ -1,6 +1,6 @@
 using System.Security.Principal;
 
-namespace ModuleFramework.Libs.WebSocketLib.Net
+namespace Dym.Libs.WebSocketLib.Net
 {
     /// <summary>
     /// Holds the username and password from an HTTP Basic authentication attempt.

@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 using System.Security.Permissions;
 using System.Text;
 
-namespace ModuleFramework.Libs.WebSocketLib.Net
+namespace Dym.Libs.WebSocketLib.Net
 {
     /// <summary>
     /// Provides a collection of the HTTP headers associated with a request or response.

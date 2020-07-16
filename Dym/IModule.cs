@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ModuleFramework
+namespace Dym
 {
     public interface IModule
     {
@@ -11,7 +11,7 @@ namespace ModuleFramework
         /// <summary>
         /// Return instance session key of module
         /// </summary>
-        string SessionKey {get;}
+        string SessionKey { get; }
         /// <summary>
         /// Return unique id defined in module
         /// </summary>
@@ -29,12 +29,12 @@ namespace ModuleFramework
         /// </summary>
         /// <param name="moduleHost"></param>
         /// <param name="ownHash"></param>
-        void Startup(IModuleHost moduleHost, string ownHash);        
+        void Startup(IModuleHost moduleHost, string ownHash);
         /// <summary>
         /// Start module with params (param1:value1, param2:value2...)
         /// </summary>
         /// <param name="parms">param1:value1, param2:value2</param>
-        void Load(params string[] parms);        
+        void Load(params string[] parms);
         /// <summary>
         /// Perform disposable operations inside module before unloading (param1:value1, param2:value2...)
         /// </summary>
@@ -46,6 +46,6 @@ namespace ModuleFramework
         /// <param name="uidFrom"></param>
         /// <param name="name"></param>
         /// <param name="messages"></param>
-        void MessageCallback(Guid uidFrom, string name, params string[] messages);        
+        void MessageCallback(Guid uidFrom, string name, params string[] messages);
     }
 }

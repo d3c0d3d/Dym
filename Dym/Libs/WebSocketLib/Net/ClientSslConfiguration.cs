@@ -3,7 +3,7 @@ using System.Net.Security;
 using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 
-namespace ModuleFramework.Libs.WebSocketLib.Net
+namespace Dym.Libs.WebSocketLib.Net
 {
     /// <summary>
     /// Stores the parameters for the <see cref="SslStream"/> used by clients.

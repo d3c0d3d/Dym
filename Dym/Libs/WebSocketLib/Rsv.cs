@@ -1,4 +1,4 @@
-namespace ModuleFramework.Libs.WebSocketLib
+namespace Dym.Libs.WebSocketLib
 {
     /// <summary>
     /// Indicates whether each RSV (RSV1, RSV2, and RSV3) of a WebSocket frame is non-zero.

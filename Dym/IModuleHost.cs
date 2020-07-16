@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ModuleFramework
+namespace Dym
 {
     public interface IModuleHost
     {

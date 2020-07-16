@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ModuleFramework.OptionCommand
+namespace Dym.OptionCommand
 {
     public class OptionException : Exception
     {

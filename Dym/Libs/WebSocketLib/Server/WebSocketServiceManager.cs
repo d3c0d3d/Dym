@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
-using ModuleFramework.Libs.WebSocketLib.Net;
-using ModuleFramework.Logging;
+using Dym.Logging;
+using Dym.Libs.WebSocketLib.Net;
 
-namespace ModuleFramework.Libs.WebSocketLib.Server
+namespace Dym.Libs.WebSocketLib.Server
 {
     /// <summary>
     /// Provides the management function for the WebSocket services.

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Text;
 
-namespace ModuleFramework.Logging
+namespace Dym.Logging
 {
     /// <summary>
     /// Represents a log data used by the <see cref="Logger"/> class.

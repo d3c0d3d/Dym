@@ -30,7 +30,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
     public partial class ZipFile
     {
@@ -71,9 +71,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///
         /// </remarks>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddFile(string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddDirectory(string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.UpdateItem(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddFile(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddDirectory(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.UpdateItem(string)"/>
         ///
         /// <overloads>This method has two overloads.</overloads>
         /// <param name="fileOrDirectoryName">
@@ -141,9 +141,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   insert the item at the root path within the archive.
         /// </param>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddFile(string, string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddDirectory(string, string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.UpdateItem(string, string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddFile(string, string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddDirectory(string, string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.UpdateItem(string, string)"/>
         ///
         /// <example>
         ///   This example shows how to zip up a set of files into a flat hierarchy,
@@ -282,9 +282,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///
         /// <overloads>This method has two overloads.</overloads>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddItem(string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddDirectory(string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.UpdateFile(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddItem(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddDirectory(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.UpdateFile(string)"/>
         ///
         /// <param name="fileName">
         ///   The name of the file to add. It should refer to a file in the filesystem.
@@ -381,9 +381,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddItem(string,string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddDirectory(string, string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.UpdateFile(string,string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddItem(string,string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddDirectory(string, string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.UpdateFile(string,string)"/>
         ///
         /// <param name="fileName">
         ///   The name of the file to add.  The name of the file may be a relative path
@@ -421,8 +421,8 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   that ICollection to this method.
         /// </param>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.SelectEntries(String)" />
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.RemoveSelectedEntries(String)" />
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.SelectEntries(String)" />
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.RemoveSelectedEntries(String)" />
         public void RemoveEntries(System.Collections.Generic.ICollection<ZipEntry> entriesToRemove)
         {
             if (entriesToRemove == null)
@@ -445,8 +445,8 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   List of Strings that provide the names of entries to be removed.
         /// </param>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.SelectEntries(String)" />
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.RemoveSelectedEntries(String)" />
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.SelectEntries(String)" />
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.RemoveSelectedEntries(String)" />
         public void RemoveEntries(System.Collections.Generic.ICollection<String> entriesToRemove)
         {
             if (entriesToRemove == null)
@@ -513,7 +513,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddSelectedFiles(String, String)" />
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddSelectedFiles(String, String)" />
         public void AddFiles(System.Collections.Generic.IEnumerable<String> fileNames)
         {
             this.AddFiles(fileNames, null);
@@ -592,7 +592,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   archive.
         /// </param>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddSelectedFiles(String, String)" />
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddSelectedFiles(String, String)" />
         public void AddFiles(System.Collections.Generic.IEnumerable<String> fileNames, String directoryPathInArchive)
         {
             AddFiles(fileNames, false, directoryPathInArchive);
@@ -658,7 +658,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   <c>true</c> will result in the full direcory paths being included in
         ///   the entries added to the ZipFile.
         /// </param>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddSelectedFiles(String, String)" />
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddSelectedFiles(String, String)" />
         public void AddFiles(System.Collections.Generic.IEnumerable<String> fileNames,
                              bool preserveDirHierarchy,
                              String directoryPathInArchive)
@@ -734,7 +734,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   archive.
         /// </param>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddSelectedFiles(String, String)" />
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddSelectedFiles(String, String)" />
         public void UpdateFiles(System.Collections.Generic.IEnumerable<String> fileNames, String directoryPathInArchive)
         {
             if (fileNames == null)
@@ -818,9 +818,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddFile(string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.UpdateDirectory(string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.UpdateItem(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddFile(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.UpdateDirectory(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.UpdateItem(string)"/>
         ///
         /// <param name="fileName">
         ///   The name of the file to add or update. It should refer to a file in the
@@ -871,9 +871,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// </para>
         /// </remarks>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddFile(string,string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.UpdateDirectory(string,string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.UpdateItem(string,string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddFile(string,string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.UpdateDirectory(string,string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.UpdateItem(string,string)"/>
         ///
         /// <param name="fileName">
         ///   The name of the file to add or update. It should refer to a file in the
@@ -921,9 +921,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   contents and the new files.
         /// </remarks>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.UpdateFile(string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddDirectory(string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.UpdateItem(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.UpdateFile(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddDirectory(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.UpdateItem(string)"/>
         ///
         /// <param name="directoryName">
         ///   The path to the directory to be added to the zip archive, or updated in
@@ -954,9 +954,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   contents and the new files.
         /// </remarks>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.UpdateFile(string,string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddDirectory(string,string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.UpdateItem(string,string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.UpdateFile(string,string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddDirectory(string,string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.UpdateItem(string,string)"/>
         ///
         /// <param name="directoryName">
         ///   The path to the directory to be added to the zip archive, or updated
@@ -1008,9 +1008,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// </para>
         /// </remarks>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddItem(string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.UpdateFile(string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.UpdateDirectory(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddItem(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.UpdateFile(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.UpdateDirectory(string)"/>
         ///
         /// <param name="itemName">
         ///  the path to the file or directory to be added or updated.
@@ -1052,9 +1052,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// </para>
         /// </remarks>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddItem(string, string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.UpdateFile(string, string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.UpdateDirectory(string, string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddItem(string, string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.UpdateFile(string, string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.UpdateDirectory(string, string)"/>
         ///
         /// <param name="itemName">
         ///   The path for the File or Directory to be added or updated.
@@ -1281,7 +1281,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.UpdateEntry(string, System.IO.Stream)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.UpdateEntry(string, System.IO.Stream)"/>
         ///
         /// <param name="entryName">
         ///   The name, including any path, which is shown in the zip file for the added
@@ -1409,7 +1409,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// DataSet ds1 = new DataSet();
         /// da.Fill(ds1, "Invoices");
         ///
-        /// using(ModuleFramework.Libs.ZipLib.Zip.ZipFile zip = new ModuleFramework.Libs.ZipLib.Zip.ZipFile())
+        /// using(Dym.Libs.ZipLib.Zip.ZipFile zip = new Dym.Libs.ZipLib.Zip.ZipFile())
         /// {
         ///     zip.AddEntry(zipEntryName, (name,stream) => ds1.WriteXml(stream) );
         ///     zip.Save(zipFileName);
@@ -1429,7 +1429,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// <code lang="C#">
         /// using (var input = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.ReadWrite ))
         /// {
-        ///     using(ModuleFramework.Libs.ZipLib.Zip.ZipFile zip = new ModuleFramework.Libs.ZipLib.Zip.ZipFile())
+        ///     using(Dym.Libs.ZipLib.Zip.ZipFile zip = new Dym.Libs.ZipLib.Zip.ZipFile())
         ///     {
         ///         zip.AddEntry(zipEntryName, (name,output) =>
         ///             {
@@ -1530,7 +1530,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   source stream for the content for a zip entry.
         ///
         /// <code lang="C#">
-        /// using(ModuleFramework.Libs.ZipLib.Zip.ZipFile zip = new ModuleFramework.Libs.ZipLib.Zip.ZipFile())
+        /// using(Dym.Libs.ZipLib.Zip.ZipFile zip = new Dym.Libs.ZipLib.Zip.ZipFile())
         /// {
         ///     zip.AddEntry(zipEntryName,
         ///                  (name) =>  File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.ReadWrite ),
@@ -1795,8 +1795,8 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///
         /// </remarks>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddEntry(string, System.IO.Stream)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.InputStream"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddEntry(string, System.IO.Stream)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipEntry.InputStream"/>
         ///
         /// <param name="entryName">
         ///   The name, including any path, to use within the archive for the entry.
@@ -1921,10 +1921,10 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///
         /// </remarks>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddItem(string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddFile(string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.UpdateDirectory(string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddDirectory(string, string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddItem(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddFile(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.UpdateDirectory(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddDirectory(string, string)"/>
         ///
         /// <overloads>This method has 2 overloads.</overloads>
         ///
@@ -1984,9 +1984,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddItem(string, string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddFile(string, string)"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.UpdateDirectory(string, string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddItem(string, string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddFile(string, string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.UpdateDirectory(string, string)"/>
         ///
         /// <param name="directoryName">The name of the directory to add.</param>
         ///

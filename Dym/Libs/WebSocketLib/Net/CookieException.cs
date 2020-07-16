@@ -2,7 +2,7 @@ using System;
 using System.Runtime.Serialization;
 using System.Security.Permissions;
 
-namespace ModuleFramework.Libs.WebSocketLib.Net
+namespace Dym.Libs.WebSocketLib.Net
 {
     /// <summary>
     /// The exception that is thrown when a <see cref="Cookie"/> gets an error.

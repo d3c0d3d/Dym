@@ -25,7 +25,7 @@
 // ------------------------------------------------------------------
 
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
 
     /// <summary>

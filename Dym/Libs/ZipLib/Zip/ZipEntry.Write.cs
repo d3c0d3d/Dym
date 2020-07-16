@@ -30,7 +30,7 @@ using System;
 using System.IO;
 using RE = System.Text.RegularExpressions;
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
     public partial class ZipEntry
     {
@@ -83,7 +83,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
 
             Int16 versionNeededToExtract = (Int16)(_OutputUsesZip64.Value ? 45 : vNeeded);
 #if BZIP
-            if (this.CompressionMethod == ModuleFramework.Libs.ZipLib.Zip.CompressionMethod.BZip2)
+            if (this.CompressionMethod == Dym.Libs.ZipLib.Zip.CompressionMethod.BZip2)
                 versionNeededToExtract = 46;
 #endif
 
@@ -682,7 +682,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         {
             if (_UncompressedSize < 0x10) return false;
             if (_CompressionMethod == 0x00) return false;
-            if (CompressionLevel == ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel.None) return false;
+            if (CompressionLevel == Dym.Libs.ZipLib.Zlib.CompressionLevel.None) return false;
             if (_CompressedSize < _UncompressedSize) return false;
 
             if (this._Source == ZipEntrySource.Stream && !this._sourceStream.CanSeek) return false;
@@ -753,8 +753,8 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                 CompressionLevel = SetCompression(LocalFileName, _FileNameInArchive);
 
             // finally, set CompressionMethod to None if CompressionLevel is None
-            if (CompressionLevel == (short)ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel.None &&
-                CompressionMethod == ModuleFramework.Libs.ZipLib.Zip.CompressionMethod.Deflate)
+            if (CompressionLevel == (short)Dym.Libs.ZipLib.Zlib.CompressionLevel.None &&
+                CompressionMethod == Dym.Libs.ZipLib.Zip.CompressionMethod.Deflate)
                 _CompressionMethod = 0x00;
 
             return;
@@ -884,7 +884,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                              (_container.Zip64 == Zip64Option.AsNecessary && !s.CanSeek));
             Int16 VersionNeededToExtract = (Int16)(_presumeZip64 ? 45 : 20);
 #if BZIP
-            if (this.CompressionMethod == ModuleFramework.Libs.ZipLib.Zip.CompressionMethod.BZip2)
+            if (this.CompressionMethod == Dym.Libs.ZipLib.Zip.CompressionMethod.BZip2)
                 VersionNeededToExtract = 46;
 #endif
 
@@ -1042,7 +1042,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
 #endif
 
             // LastMod
-            _TimeBlob = ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.DateTimeToPacked(LastModified);
+            _TimeBlob = Dym.Libs.ZipLib.Zip.SharedUtilities.DateTimeToPacked(LastModified);
 
             // (i==10) time blob
             block[i++] = (byte)(_TimeBlob & 0x000000FF);
@@ -1503,7 +1503,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
             output.Close();
 
             // by calling Close() on the deflate stream, we write the footer bytes, as necessary.
-            if ((compressor as ModuleFramework.Libs.ZipLib.Zlib.DeflateStream) != null)
+            if ((compressor as Dym.Libs.ZipLib.Zlib.DeflateStream) != null)
                 compressor.Close();
 #if BZIP
             else if ((compressor as Ionic.BZip2.BZip2OutputStream) != null)
@@ -1515,7 +1515,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
 #endif
 
 #if !NETCF
-            else if ((compressor as ModuleFramework.Libs.ZipLib.Zlib.ParallelDeflateOutputStream) != null)
+            else if ((compressor as Dym.Libs.ZipLib.Zlib.ParallelDeflateOutputStream) != null)
                 compressor.Close();
 #endif
 
@@ -1579,7 +1579,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                         s.Seek(-1 * headerBytesToRetract, SeekOrigin.Current);
                         s.SetLength(s.Position);
                         // workitem 10178
-                        ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(s);
+                        Dym.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(s);
 
                         // workitem 11131
                         // adjust the count on the CountingStream as necessary
@@ -1935,7 +1935,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
 
         private Stream MaybeApplyCompression(Stream s, long streamLength)
         {
-            if (_CompressionMethod == 0x08 && CompressionLevel != ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel.None)
+            if (_CompressionMethod == 0x08 && CompressionLevel != Dym.Libs.ZipLib.Zlib.CompressionLevel.None)
             {
 #if !NETCF
                 // ParallelDeflateThreshold == 0    means ALWAYS use parallel deflate
@@ -1967,7 +1967,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                     if (_container.ParallelDeflater == null)
                     {
                         _container.ParallelDeflater =
-                            new ModuleFramework.Libs.ZipLib.Zlib.ParallelDeflateOutputStream(s,
+                            new Dym.Libs.ZipLib.Zlib.ParallelDeflateOutputStream(s,
                                                                        CompressionLevel,
                                                                        _container.Strategy,
                                                                        true);
@@ -1979,12 +1979,12 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                                 _container.ParallelDeflateMaxBufferPairs;
                     }
                     // reset it with the new stream
-                    ModuleFramework.Libs.ZipLib.Zlib.ParallelDeflateOutputStream o1 = _container.ParallelDeflater;
+                    Dym.Libs.ZipLib.Zlib.ParallelDeflateOutputStream o1 = _container.ParallelDeflater;
                     o1.Reset(s);
                     return o1;
                 }
 #endif
-                var o = new ModuleFramework.Libs.ZipLib.Zlib.DeflateStream(s, ModuleFramework.Libs.ZipLib.Zlib.CompressionMode.Compress,
+                var o = new Dym.Libs.ZipLib.Zlib.DeflateStream(s, Dym.Libs.ZipLib.Zlib.CompressionMode.Compress,
                                                      CompressionLevel,
                                                      true);
                 if (_container.CodecBufferSize > 0)
@@ -2315,7 +2315,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                     // http://www.info-zip.org/pub/infozip/
 
                     // Also, winzip insists on this!
-                    _TimeBlob = ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.DateTimeToPacked(LastModified);
+                    _TimeBlob = Dym.Libs.ZipLib.Zip.SharedUtilities.DateTimeToPacked(LastModified);
                     encryptionHeader[11] = (byte)((this._TimeBlob >> 8) & 0xff);
                 }
                 else

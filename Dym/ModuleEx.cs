@@ -1,13 +1,13 @@
-﻿using ModuleFramework.Extensions;
-using ModuleFramework.Logging;
-using ModuleFramework.OptionCommand;
-using ModuleFramework.Util;
+﻿using Dym.Logging;
+using Dym.OptionCommand;
+using Dym.Util;
+using Dym.Extensions;
 using System;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace ModuleFramework
+namespace Dym
 {
     public abstract class ModuleEx
     {
@@ -23,7 +23,7 @@ namespace ModuleFramework
         private OptionSet _optionSet;
 
         public static readonly Logger _logger = LoggerFactory.CreateLogger(LogLevel.Info, Utilities.GetEnvLoggerFile(Constants.MFL.ToStr()));
-       
+
         public Guid _instanceUidFrom;
         public string[] _instanceMessages;
 
@@ -43,7 +43,7 @@ namespace ModuleFramework
             _optionSet = new OptionSet().Add(UNSUPPORTFLAG, _ => UnSupported());
         }
 
-        public ModuleEx MethodRegistry(string name,Action<string> action)
+        public ModuleEx MethodRegistry(string name, Action<string> action)
         {
             _optionSet.Add(name, action);
             return this;

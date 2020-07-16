@@ -7,11 +7,11 @@ using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
-using ModuleFramework.Libs.WebSocketLib.Net;
-using ModuleFramework.Libs.WebSocketLib.Net.WebSockets;
-using ModuleFramework.Logging;
+using Dym.Logging;
+using Dym.Libs.WebSocketLib.Net;
+using Dym.Libs.WebSocketLib.Net.WebSockets;
 
-namespace ModuleFramework.Libs.WebSocketLib
+namespace Dym.Libs.WebSocketLib
 {
     /// <summary>
     /// Implements the WebSocket interface.

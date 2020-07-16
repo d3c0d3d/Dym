@@ -5,9 +5,9 @@ using System.IO;
 using System.IO.Compression;
 using System.Net.Sockets;
 using System.Text;
-using ModuleFramework.Libs.WebSocketLib.Net;
+using Dym.Libs.WebSocketLib.Net;
 
-namespace ModuleFramework.Libs.WebSocketLib
+namespace Dym.Libs.WebSocketLib
 {
     /// <summary>
     /// Provides a set of static methods.

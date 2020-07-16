@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace ModuleFramework.Libs.WebSocketLib.Net
+namespace Dym.Libs.WebSocketLib.Net
 {
     public class ChunkedRequestStream : RequestStream
     {

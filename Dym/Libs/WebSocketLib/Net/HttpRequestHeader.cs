@@ -1,4 +1,4 @@
-namespace ModuleFramework.Libs.WebSocketLib.Net
+namespace Dym.Libs.WebSocketLib.Net
 {
     /// <summary>
     /// Contains the HTTP headers that may be specified in a client request.

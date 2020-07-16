@@ -25,7 +25,7 @@
 
 using System;
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
   static class ZipConstants
   {      

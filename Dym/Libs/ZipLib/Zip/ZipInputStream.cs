@@ -21,7 +21,7 @@
 // ------------------------------------------------------------------
 //
 // This module defines the ZipInputStream class, which is a stream metaphor for
-// reading zip files.  This class does not depend on ModuleFramework.Libs.ZipLib.Zip.ZipFile, but rather
+// reading zip files.  This class does not depend on Dym.Libs.ZipLib.Zip.ZipFile, but rather
 // stands alongside it as an alternative "container" for ZipEntry, when reading zips.
 //
 // It adds one interesting method to the normal "stream" interface: GetNextEntry.
@@ -33,9 +33,9 @@ using System;
 using System.Threading;
 using System.Collections.Generic;
 using System.IO;
-using ModuleFramework.Libs.ZipLib.Zip;
+using Dym.Libs.ZipLib.Zip;
 
-namespace  ModuleFramework.Libs.ZipLib.Zip
+namespace  Dym.Libs.ZipLib.Zip
 {
     /// <summary>
     ///   Provides a stream metaphor for reading zip files.
@@ -579,7 +579,7 @@ namespace  ModuleFramework.Libs.ZipLib.Zip
                 _currentEntry.VerifyCrcAfterExtract(CrcResult);
                 _inputStream.Seek(_endOfEntry, SeekOrigin.Begin);
                 // workitem 10178
-                ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(_inputStream);
+                Dym.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(_inputStream);
             }
 
             return n;
@@ -631,7 +631,7 @@ namespace  ModuleFramework.Libs.ZipLib.Zip
                 // back up 4 bytes: ReadEntry assumes the file pointer is positioned before the entry signature
                 _inputStream.Seek(-4, SeekOrigin.Current);
                 // workitem 10178
-                ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(_inputStream);
+                Dym.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(_inputStream);
             }
             // workitem 10923
             else if (_firstEntry)
@@ -639,7 +639,7 @@ namespace  ModuleFramework.Libs.ZipLib.Zip
                 // we've already read one entry.
                 // Seek to the end of it.
                 _inputStream.Seek(_endOfEntry, SeekOrigin.Begin);
-                ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(_inputStream);
+                Dym.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(_inputStream);
             }
 
             _currentEntry = ZipEntry.ReadEntry(_container, !_firstEntry);
@@ -790,7 +790,7 @@ namespace  ModuleFramework.Libs.ZipLib.Zip
             _findRequired= true;
             var x = _inputStream.Seek(offset, origin);
             // workitem 10178
-            ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(_inputStream);
+            Dym.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(_inputStream);
             return x;
         }
 

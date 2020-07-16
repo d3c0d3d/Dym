@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 
-namespace ModuleFramework.Libs.WebSocketLib.Net
+namespace Dym.Libs.WebSocketLib.Net
 {
     public static class EndPointManager
     {

@@ -30,7 +30,7 @@
 using System;
 using System.IO;
 
-namespace ModuleFramework.Libs.ZipLib.Zlib
+namespace Dym.Libs.ZipLib.Zlib
 {
     /// <summary>
     ///   A class for compressing and decompressing GZIP streams.
@@ -46,7 +46,7 @@ namespace ModuleFramework.Libs.ZipLib.Zlib
     ///
     /// <para>
     ///   Like the <c>System.IO.Compression.GZipStream</c> in the .NET Base Class Library, the
-    ///   <c>ModuleFramework.Libs.ZipLib.Zlib.GZipStream</c> can compress while writing, or decompress while
+    ///   <c>Dym.Libs.ZipLib.Zlib.GZipStream</c> can compress while writing, or decompress while
     ///   reading, but not vice versa.  The compression method used is GZIP, which is
     ///   documented in <see href="http://www.ietf.org/rfc/rfc1952.txt">IETF RFC
     ///   1952</see>, "GZIP file format specification version 4.3".</para>
@@ -298,7 +298,7 @@ namespace ModuleFramework.Libs.ZipLib.Zlib
         ///     int n= 1;
         ///     using (System.IO.Stream input = System.IO.File.OpenRead(filename))
         ///     {
-        ///         using (Stream decompressor= new ModuleFramework.Libs.ZipLib.Zlib.GZipStream(input, CompressionMode.Decompress, true))
+        ///         using (Stream decompressor= new Dym.Libs.ZipLib.Zlib.GZipStream(input, CompressionMode.Decompress, true))
         ///         {
         ///             using (var output = System.IO.File.Create(DecompressedFile))
         ///             {
@@ -325,7 +325,7 @@ namespace ModuleFramework.Libs.ZipLib.Zlib
         ///     Dim working(WORKING_BUFFER_SIZE) as Byte
         ///     Dim n As Integer = 1
         ///     Using input As Stream = File.OpenRead(filename)
-        ///         Using decompressor As Stream = new ModuleFramework.Libs.ZipLib.Zlib.GZipStream(input, CompressionMode.Decompress, True)
+        ///         Using decompressor As Stream = new Dym.Libs.ZipLib.Zlib.GZipStream(input, CompressionMode.Decompress, True)
         ///             Using output As Stream = File.Create(UncompressedFile)
         ///                 Do
         ///                     n= decompressor.Read(working, 0, working.Length)
@@ -728,9 +728,9 @@ namespace ModuleFramework.Libs.ZipLib.Zlib
         {
             get
             {
-                if (this._baseStream._streamMode == ModuleFramework.Libs.ZipLib.Zlib.ZlibBaseStream.StreamMode.Writer)
+                if (this._baseStream._streamMode == Dym.Libs.ZipLib.Zlib.ZlibBaseStream.StreamMode.Writer)
                     return this._baseStream._z.TotalBytesOut + _headerByteCount;
-                if (this._baseStream._streamMode == ModuleFramework.Libs.ZipLib.Zlib.ZlibBaseStream.StreamMode.Reader)
+                if (this._baseStream._streamMode == Dym.Libs.ZipLib.Zlib.ZlibBaseStream.StreamMode.Reader)
                     return this._baseStream._z.TotalBytesIn + this._baseStream._gzipHeaderByteCount;
                 return 0;
             }
@@ -751,7 +751,7 @@ namespace ModuleFramework.Libs.ZipLib.Zlib
         /// byte[] working = new byte[WORKING_BUFFER_SIZE];
         /// using (System.IO.Stream input = System.IO.File.OpenRead(_CompressedFile))
         /// {
-        ///     using (Stream decompressor= new ModuleFramework.Libs.ZipLib.Zlib.GZipStream(input, CompressionMode.Decompress, true))
+        ///     using (Stream decompressor= new Dym.Libs.ZipLib.Zlib.GZipStream(input, CompressionMode.Decompress, true))
         ///     {
         ///         using (var output = System.IO.File.Create(_DecompressedFile))
         ///         {
@@ -833,7 +833,7 @@ namespace ModuleFramework.Libs.ZipLib.Zlib
         public override void Write(byte[] buffer, int offset, int count)
         {
             if (_disposed) throw new ObjectDisposedException("GZipStream");
-            if (_baseStream._streamMode == ModuleFramework.Libs.ZipLib.Zlib.ZlibBaseStream.StreamMode.Undefined)
+            if (_baseStream._streamMode == Dym.Libs.ZipLib.Zlib.ZlibBaseStream.StreamMode.Undefined)
             {
                 //Console.WriteLine("GZipStream: First write");
                 if (_baseStream._wantCompress)

@@ -2,9 +2,9 @@ using System;
 using System.Collections.Specialized;
 using System.IO;
 using System.Text;
-using ModuleFramework.Libs.WebSocketLib.Net;
+using Dym.Libs.WebSocketLib.Net;
 
-namespace ModuleFramework.Libs.WebSocketLib
+namespace Dym.Libs.WebSocketLib
 {
     public class HttpResponse : HttpBase
     {

@@ -1,4 +1,4 @@
-namespace ModuleFramework.Libs.WebSocketLib
+namespace Dym.Libs.WebSocketLib
 {
     /// <summary>
     /// Indicates whether the payload data of a WebSocket frame is masked.

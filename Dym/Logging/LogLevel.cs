@@ -1,4 +1,4 @@
-﻿namespace ModuleFramework.Logging
+﻿namespace Dym.Logging
 {
     /// <summary>
     /// Specifies the logging level.

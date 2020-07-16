@@ -1,7 +1,7 @@
-using ModuleFramework.Logging;
+using Dym.Logging;
 using System;
 
-namespace ModuleFramework.Libs.WebSocketLib.Server
+namespace Dym.Libs.WebSocketLib.Server
 {
     public class WebSocketServiceHost<TBehavior> : WebSocketServiceHost where TBehavior : WebSocketBehavior
     {

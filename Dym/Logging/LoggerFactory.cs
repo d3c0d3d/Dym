@@ -1,4 +1,4 @@
-﻿namespace ModuleFramework.Logging
+﻿namespace Dym.Logging
 {
     public static class LoggerFactory
     {

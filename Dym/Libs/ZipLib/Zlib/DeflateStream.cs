@@ -27,7 +27,7 @@
 
 using System;
 
-namespace ModuleFramework.Libs.ZipLib.Zlib
+namespace Dym.Libs.ZipLib.Zlib
 {
     /// <summary>
     /// A class for compressing and decompressing streams using the Deflate algorithm.
@@ -520,9 +520,9 @@ namespace ModuleFramework.Libs.ZipLib.Zlib
         {
             get
             {
-                if (this._baseStream._streamMode == ModuleFramework.Libs.ZipLib.Zlib.ZlibBaseStream.StreamMode.Writer)
+                if (this._baseStream._streamMode == Dym.Libs.ZipLib.Zlib.ZlibBaseStream.StreamMode.Writer)
                     return this._baseStream._z.TotalBytesOut;
-                if (this._baseStream._streamMode == ModuleFramework.Libs.ZipLib.Zlib.ZlibBaseStream.StreamMode.Reader)
+                if (this._baseStream._streamMode == Dym.Libs.ZipLib.Zlib.ZlibBaseStream.StreamMode.Reader)
                     return this._baseStream._z.TotalBytesIn;
                 return 0;
             }

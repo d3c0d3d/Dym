@@ -1,9 +1,9 @@
-using ModuleFramework.Libs.WebSocketLib;
+using Dym.Libs.WebSocketLib;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace ModuleFramework.Libs.WebSocketLib
+namespace Dym.Libs.WebSocketLib
 {
     public class PayloadData : IEnumerable<byte>
     {

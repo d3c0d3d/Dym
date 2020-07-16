@@ -1,6 +1,6 @@
 using System;
 
-namespace ModuleFramework.Libs.WebSocketLib.Net
+namespace Dym.Libs.WebSocketLib.Net
 {
     /// <summary>
     /// Provides the credentials for the password-based authentication.

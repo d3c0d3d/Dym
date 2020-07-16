@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace ModuleFramework.Extensions
+namespace Dym.Extensions
 {
     public static class StringExtensions
     {

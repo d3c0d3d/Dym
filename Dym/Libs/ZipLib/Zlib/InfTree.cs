@@ -62,7 +62,7 @@
 
 
 using System;
-namespace ModuleFramework.Libs.ZipLib.Zlib
+namespace Dym.Libs.ZipLib.Zlib
 {
         
         sealed class InfTree

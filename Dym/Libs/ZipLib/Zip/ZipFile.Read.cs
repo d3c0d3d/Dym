@@ -29,7 +29,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
     /// <summary>
     ///   A class for collecting the various options that can be used when
@@ -684,7 +684,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
             s.Seek(offset64, SeekOrigin.Begin);
             //zf.SeekFromOrigin(Offset64);
 
-            uint datum = (uint)ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.ReadInt(s);
+            uint datum = (uint)Dym.Libs.ZipLib.Zip.SharedUtilities.ReadInt(s);
             if (datum != ZipConstants.Zip64EndOfCentralDirectoryRecordSignature)
                 throw new BadReadException(String.Format("  Bad signature (0x{0:X8}) looking for ZIP64 EoCD Record at position 0x{1:X8}", datum, s.Position));
 
@@ -703,7 +703,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
 
         private static uint ReadFirstFourBytes(Stream s)
         {
-            uint datum = (uint)ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.ReadInt(s);
+            uint datum = (uint)Dym.Libs.ZipLib.Zip.SharedUtilities.ReadInt(s);
             return datum;
         }
 
@@ -832,7 +832,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         private static void ReadCentralDirectoryFooter(ZipFile zf)
         {
             Stream s = zf.ReadStream;
-            int signature = ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.ReadSignature(s);
+            int signature = Dym.Libs.ZipLib.Zip.SharedUtilities.ReadSignature(s);
 
             byte[] block = null;
             int j = 0;
@@ -875,7 +875,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                 s.Read(block, 0, block.Length);
                 // discard the result
 
-                signature = ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.ReadSignature(s);
+                signature = Dym.Libs.ZipLib.Zip.SharedUtilities.ReadSignature(s);
                 if (signature != ZipConstants.Zip64EndOfCentralDirectoryLocatorSignature)
                     throw new ZipException("Inconsistent metadata in the ZIP64 Central Directory.");
 
@@ -883,7 +883,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                 s.Read(block, 0, block.Length);
                 // discard the result
 
-                signature = ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.ReadSignature(s);
+                signature = Dym.Libs.ZipLib.Zip.SharedUtilities.ReadSignature(s);
             }
 
             // Throw if this is not a signature for "end of central directory record"

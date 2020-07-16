@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Dym.Util;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace ModuleFramework
+namespace Dym
 {
     public class ModuleHost : MarshalByRefObject, IModuleHost
     {
@@ -23,7 +24,7 @@ namespace ModuleFramework
 
                 if (!storage.FileExists(modulebaseUid))
                 {
-                    var mfResource = Utilities.GetEmbeddedResourceBytes(nameof(ModuleFramework) + ".comp");
+                    var mfResource = Utilities.GetEmbeddedResourceBytes(nameof(Dym) + ".comp");
 
                     // load framework from resource
                     loaderType = domain.Load(mfResource).GetType(typeof(ModuleLoader).FullName);
@@ -43,7 +44,7 @@ namespace ModuleFramework
                     byte[] frameworkBytes = storage.GetFile(new Guid(Constants.ModuleUid).ToString());
                     loaderType = domain.Load(frameworkBytes).GetType(typeof(ModuleLoader).FullName);
                     loader = Activator.CreateInstance(loaderType) as ModuleLoader;
-                }                
+                }
 
                 loader.Startup(this, mbytes);
 

@@ -28,7 +28,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
     internal class ZipSegmentedStream : System.IO.Stream
     {
@@ -396,7 +396,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
             {
                 var x =_innerStream.Seek(offset, SeekOrigin.Begin);
                 // workitem 10178
-                ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(_innerStream);
+                Dym.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(_innerStream);
                 return x;
             }
 
@@ -448,7 +448,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
             var r =  _innerStream.Seek(offset, SeekOrigin.Begin);
 
             // workitem 10178
-            ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(_innerStream);
+            Dym.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(_innerStream);
 
             return r;
         }
@@ -509,7 +509,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         {
             var x = _innerStream.Seek(offset, origin);
             // workitem 10178
-            ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(_innerStream);
+            Dym.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(_innerStream);
             return x;
         }
 

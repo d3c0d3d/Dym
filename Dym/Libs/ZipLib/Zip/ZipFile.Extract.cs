@@ -29,7 +29,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
 
     public partial class ZipFile
@@ -55,7 +55,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   be extracted, the existing file will not be overwritten and an
         ///   exception will be thrown. To change this, set the property, or use the
         ///   <see cref="ZipFile.ExtractAll(string,
-        ///   ModuleFramework.Libs.ZipLib.Zip.ExtractExistingFileAction)" /> overload that allows you to
+        ///   Dym.Libs.ZipLib.Zip.ExtractExistingFileAction)" /> overload that allows you to
         ///   specify an ExtractExistingFileAction parameter.
         /// </para>
         ///
@@ -139,8 +139,8 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.ExtractProgress"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.ExtractExistingFile"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.ExtractProgress"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.ExtractExistingFile"/>
         ///
         /// <param name="path">
         ///   The path to which the contents of the zipfile will be extracted.

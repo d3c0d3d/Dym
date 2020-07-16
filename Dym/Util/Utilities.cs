@@ -2,7 +2,7 @@
 using System.IO;
 using System.Reflection;
 using System.Collections.Concurrent;
-using ModuleFramework.Extensions;
+using Dym.Extensions;
 using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
@@ -10,7 +10,7 @@ using System.IO.Compression;
 using System.Net.NetworkInformation;
 using System.Net;
 
-namespace ModuleFramework
+namespace Dym.Util
 {
     public static class Utilities
     {
@@ -104,20 +104,20 @@ namespace ModuleFramework
                 return Path.GetDirectoryName(path);
             }
         }
-        
-        public static ConcurrentDictionary<string,string> ParamsParse(string[] parms, char delimiter = ':')
+
+        public static ConcurrentDictionary<string, string> ParamsParse(string[] parms, char delimiter = ':')
         {
             var result = new ConcurrentDictionary<string, string>();
             foreach (var parm in parms)
             {
-                if(parm.Contains(delimiter))
+                if (parm.Contains(delimiter))
                 {
                     var splitParm = parm.Split(delimiter);
                     result.TryAdd(splitParm[0], splitParm[1]);
                 }
-                else                
+                else
                     result.TryAdd(parm, parm);
-                
+
             }
 
             return result;

@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace ModuleFramework.Extensions
+namespace Dym.Extensions
 {
     public static class AESThenHMACExtensions
     {

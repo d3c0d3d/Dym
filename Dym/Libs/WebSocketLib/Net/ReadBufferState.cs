@@ -1,4 +1,4 @@
-namespace ModuleFramework.Libs.WebSocketLib.Net
+namespace Dym.Libs.WebSocketLib.Net
 {
     public class ReadBufferState
     {

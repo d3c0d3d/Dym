@@ -29,7 +29,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
 
     public partial class ZipFile
@@ -111,9 +111,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///
         /// </remarks>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddEntry(String, System.IO.Stream)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddEntry(String, System.IO.Stream)"/>
         ///
-        /// <exception cref="ModuleFramework.Libs.ZipLib.Zip.BadStateException">
+        /// <exception cref="Dym.Libs.ZipLib.Zip.BadStateException">
         ///   Thrown if you haven't specified a location or stream for saving the zip,
         ///   either in the constructor or by setting the Name property, or if you try
         ///   to save a regular zip archive to a filename with a .exe extension.
@@ -515,9 +515,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   then gets the array of bytes from that MemoryStream.
         ///
         /// <code lang="C#">
-        /// using (var zip = new ModuleFramework.Libs.ZipLib.Zip.ZipFile())
+        /// using (var zip = new Dym.Libs.ZipLib.Zip.ZipFile())
         /// {
-        ///     zip.CompressionLevel= ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel.BestCompression;
+        ///     zip.CompressionLevel= Dym.Libs.ZipLib.Zlib.CompressionLevel.BestCompression;
         ///     zip.Password = "VerySecret.";
         ///     zip.Encryption = EncryptionAlgorithm.WinZipAes128;
         ///     zip.AddFile(sourceFileName);
@@ -539,7 +539,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// <code lang="C#">
         /// using (var fs = new FileSteeam(filename, FileMode.Open))
         /// {
-        ///   using (var zip = ModuleFramework.Libs.ZipLib.Zip.ZipFile.Read(inputStream))
+        ///   using (var zip = Dym.Libs.ZipLib.Zip.ZipFile.Read(inputStream))
         ///   {
         ///     zip.AddEntry("Name1.txt", "this is the content");
         ///     zip.Save(inputStream);  // NO NO NO!!
@@ -552,7 +552,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// </para>
         ///
         /// <code lang="C#">
-        /// using (var zip = ModuleFramework.Libs.ZipLib.Zip.ZipFile.Read(filename))
+        /// using (var zip = Dym.Libs.ZipLib.Zip.ZipFile.Read(filename))
         /// {
         ///     zip.AddEntry("Name1.txt", "this is the content");
         ///     zip.Save();  // YES!

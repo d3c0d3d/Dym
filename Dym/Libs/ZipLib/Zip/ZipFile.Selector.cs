@@ -36,7 +36,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
 
     partial class ZipFile
@@ -1247,13 +1247,13 @@ namespace Ionic
 {
     internal abstract partial class SelectionCriterion
     {
-        internal abstract bool Evaluate(ModuleFramework.Libs.ZipLib.Zip.ZipEntry entry);
+        internal abstract bool Evaluate(Dym.Libs.ZipLib.Zip.ZipEntry entry);
     }
 
 
     internal partial class NameCriterion : SelectionCriterion
     {
-        internal override bool Evaluate(ModuleFramework.Libs.ZipLib.Zip.ZipEntry entry)
+        internal override bool Evaluate(Dym.Libs.ZipLib.Zip.ZipEntry entry)
         {
             // swap forward slashes in the entry.FileName for backslashes
             string transformedFileName = entry.FileName.Replace("/", "\\");
@@ -1265,7 +1265,7 @@ namespace Ionic
 
     internal partial class SizeCriterion : SelectionCriterion
     {
-        internal override bool Evaluate(ModuleFramework.Libs.ZipLib.Zip.ZipEntry entry)
+        internal override bool Evaluate(Dym.Libs.ZipLib.Zip.ZipEntry entry)
         {
             return _Evaluate(entry.UncompressedSize);
         }
@@ -1273,7 +1273,7 @@ namespace Ionic
 
     internal partial class TimeCriterion : SelectionCriterion
     {
-        internal override bool Evaluate(ModuleFramework.Libs.ZipLib.Zip.ZipEntry entry)
+        internal override bool Evaluate(Dym.Libs.ZipLib.Zip.ZipEntry entry)
         {
             DateTime x;
             switch (Which)
@@ -1296,7 +1296,7 @@ namespace Ionic
 
     internal partial class TypeCriterion : SelectionCriterion
     {
-        internal override bool Evaluate(ModuleFramework.Libs.ZipLib.Zip.ZipEntry entry)
+        internal override bool Evaluate(Dym.Libs.ZipLib.Zip.ZipEntry entry)
         {
             bool result = (ObjectType == 'D')
                 ? entry.IsDirectory
@@ -1311,7 +1311,7 @@ namespace Ionic
 #if !SILVERLIGHT
     internal partial class AttributesCriterion : SelectionCriterion
     {
-        internal override bool Evaluate(ModuleFramework.Libs.ZipLib.Zip.ZipEntry entry)
+        internal override bool Evaluate(Dym.Libs.ZipLib.Zip.ZipEntry entry)
         {
             FileAttributes fileAttrs = entry.Attributes;
             return _Evaluate(fileAttrs);
@@ -1321,7 +1321,7 @@ namespace Ionic
 
     internal partial class CompoundCriterion : SelectionCriterion
     {
-        internal override bool Evaluate(ModuleFramework.Libs.ZipLib.Zip.ZipEntry entry)
+        internal override bool Evaluate(Dym.Libs.ZipLib.Zip.ZipEntry entry)
         {
             bool result = Left.Evaluate(entry);
             switch (Conjunction)
@@ -1346,7 +1346,7 @@ namespace Ionic
 
     public partial class FileSelector
     {
-        private bool Evaluate(ModuleFramework.Libs.ZipLib.Zip.ZipEntry entry)
+        private bool Evaluate(Dym.Libs.ZipLib.Zip.ZipEntry entry)
         {
             bool result = _Criterion.Evaluate(entry);
             return result;
@@ -1380,14 +1380,14 @@ namespace Ionic
         /// <param name="zip">The ZipFile from which to retrieve entries.</param>
         ///
         /// <returns>a collection of ZipEntry objects that conform to the criteria.</returns>
-        public ICollection<ModuleFramework.Libs.ZipLib.Zip.ZipEntry> SelectEntries(ModuleFramework.Libs.ZipLib.Zip.ZipFile zip)
+        public ICollection<Dym.Libs.ZipLib.Zip.ZipEntry> SelectEntries(Dym.Libs.ZipLib.Zip.ZipFile zip)
         {
             if (zip == null)
                 throw new ArgumentNullException("zip");
 
-            var list = new List<ModuleFramework.Libs.ZipLib.Zip.ZipEntry>();
+            var list = new List<Dym.Libs.ZipLib.Zip.ZipEntry>();
 
-            foreach (ModuleFramework.Libs.ZipLib.Zip.ZipEntry e in zip)
+            foreach (Dym.Libs.ZipLib.Zip.ZipEntry e in zip)
             {
                 if (this.Evaluate(e))
                     list.Add(e);
@@ -1435,12 +1435,12 @@ namespace Ionic
         /// </param>
         ///
         /// <returns>a collection of ZipEntry objects that conform to the criteria.</returns>
-        public ICollection<ModuleFramework.Libs.ZipLib.Zip.ZipEntry> SelectEntries(ModuleFramework.Libs.ZipLib.Zip.ZipFile zip, string directoryPathInArchive)
+        public ICollection<Dym.Libs.ZipLib.Zip.ZipEntry> SelectEntries(Dym.Libs.ZipLib.Zip.ZipFile zip, string directoryPathInArchive)
         {
             if (zip == null)
                 throw new ArgumentNullException("zip");
 
-            var list = new List<ModuleFramework.Libs.ZipLib.Zip.ZipEntry>();
+            var list = new List<Dym.Libs.ZipLib.Zip.ZipEntry>();
             // workitem 8559
             string slashSwapped = (directoryPathInArchive == null) ? null : directoryPathInArchive.Replace("/", "\\");
             // workitem 9174
@@ -1449,7 +1449,7 @@ namespace Ionic
                 while (slashSwapped.EndsWith("\\"))
                     slashSwapped = slashSwapped.Substring(0, slashSwapped.Length - 1);
             }
-            foreach (ModuleFramework.Libs.ZipLib.Zip.ZipEntry e in zip)
+            foreach (Dym.Libs.ZipLib.Zip.ZipEntry e in zip)
             {
                 if (directoryPathInArchive == null || (Path.GetDirectoryName(e.FileName) == directoryPathInArchive)
                     || (Path.GetDirectoryName(e.FileName) == slashSwapped)) // workitem 8559

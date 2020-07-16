@@ -2,9 +2,9 @@ using System;
 using System.IO;
 using System.Security.Principal;
 using System.Text;
-using ModuleFramework.Libs.WebSocketLib.Net;
+using Dym.Libs.WebSocketLib.Net;
 
-namespace ModuleFramework.Libs.WebSocketLib.Server
+namespace Dym.Libs.WebSocketLib.Server
 {
     /// <summary>
     /// Represents the event data for the HTTP request events of

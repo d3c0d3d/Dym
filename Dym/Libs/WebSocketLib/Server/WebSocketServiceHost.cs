@@ -1,8 +1,8 @@
 using System;
-using ModuleFramework.Libs.WebSocketLib.Net.WebSockets;
-using ModuleFramework.Logging;
+using Dym.Logging;
+using Dym.Libs.WebSocketLib.Net.WebSockets;
 
-namespace ModuleFramework.Libs.WebSocketLib.Server
+namespace Dym.Libs.WebSocketLib.Server
 {
     /// <summary>
     /// Exposes the methods and properties used to access the information in

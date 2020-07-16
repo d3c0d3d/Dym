@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Security.Principal;
 
-namespace ModuleFramework.Libs.WebSocketLib.Net.WebSockets
+namespace Dym.Libs.WebSocketLib.Net.WebSockets
 {
     /// <summary>
     /// Exposes the access to the information in a WebSocket handshake request.

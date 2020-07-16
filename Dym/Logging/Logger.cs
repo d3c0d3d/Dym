@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 
-namespace ModuleFramework.Logging
+namespace Dym.Logging
 {
     /// <summary>
     /// Provides a set of methods and properties for logging.

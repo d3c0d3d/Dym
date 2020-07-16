@@ -7,7 +7,7 @@ using System.IO;
 using System.Security.Principal;
 using System.Text;
 
-namespace ModuleFramework.Libs.WebSocketLib.Net
+namespace Dym.Libs.WebSocketLib.Net
 {
     public sealed class HttpUtility
     {

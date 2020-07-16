@@ -63,7 +63,7 @@
 
 using System;
 
-namespace ModuleFramework.Libs.ZipLib.Zlib
+namespace Dym.Libs.ZipLib.Zlib
 {
     /// <summary>
     /// A bunch of constants used in the Zlib interface.

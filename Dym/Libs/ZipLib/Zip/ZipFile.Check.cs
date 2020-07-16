@@ -31,7 +31,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
     public partial class ZipFile
     {
@@ -290,7 +290,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                 }
                 success = true;
             }
-            catch(ModuleFramework.Libs.ZipLib.Zip.BadPasswordException) { }
+            catch(Dym.Libs.ZipLib.Zip.BadPasswordException) { }
             return success;
         }
 

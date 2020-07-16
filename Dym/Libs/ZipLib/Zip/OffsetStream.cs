@@ -29,7 +29,7 @@
 using System;
 using System.IO;
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
     internal class OffsetStream : System.IO.Stream, System.IDisposable
     {

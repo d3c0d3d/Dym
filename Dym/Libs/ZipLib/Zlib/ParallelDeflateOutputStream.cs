@@ -27,11 +27,11 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using ModuleFramework.Libs.ZipLib.Zlib;
+using Dym.Libs.ZipLib.Zlib;
 using System.IO;
 
 
-namespace ModuleFramework.Libs.ZipLib.Zlib
+namespace Dym.Libs.ZipLib.Zlib
 {
     internal class WorkItem
     {
@@ -45,7 +45,7 @@ namespace ModuleFramework.Libs.ZipLib.Zlib
         public ZlibCodec compressor;
 
         public WorkItem(int size,
-                        ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel compressLevel,
+                        Dym.Libs.ZipLib.Zlib.CompressionLevel compressLevel,
                         CompressionStrategy strategy,
                         int ix)
         {
@@ -74,7 +74,7 @@ namespace ModuleFramework.Libs.ZipLib.Zlib
     /// </para>
     ///
     /// <para>
-    ///   This class is similar to <see cref="ModuleFramework.Libs.ZipLib.Zlib.DeflateStream"/>, except
+    ///   This class is similar to <see cref="Dym.Libs.ZipLib.Zlib.DeflateStream"/>, except
     ///   that this class is for compression only, and this implementation uses an
     ///   approach that employs multiple worker threads to perform the DEFLATE.  On
     ///   a multi-cpu or multi-core computer, the performance of this class can be
@@ -97,7 +97,7 @@ namespace ModuleFramework.Libs.ZipLib.Zlib
     /// </para>
     ///
     /// </remarks>
-    /// <seealso cref="ModuleFramework.Libs.ZipLib.Zlib.DeflateStream" />
+    /// <seealso cref="Dym.Libs.ZipLib.Zlib.DeflateStream" />
     public class ParallelDeflateOutputStream : System.IO.Stream
     {
 
@@ -126,7 +126,7 @@ namespace ModuleFramework.Libs.ZipLib.Zlib
         private System.Collections.Generic.Queue<int>     _toWrite;
         private System.Collections.Generic.Queue<int>     _toFill;
         private Int64                       _totalBytesProcessed;
-        private ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel _compressLevel;
+        private Dym.Libs.ZipLib.Zlib.CompressionLevel _compressLevel;
         private volatile Exception          _pendingException;
         private bool                        _handlingException;
         private object                      _eLock = new Object();  // protects _pendingException
@@ -166,7 +166,7 @@ namespace ModuleFramework.Libs.ZipLib.Zlib
         /// </para>
         ///
         /// <para>
-        ///   This class is similar to <see cref="ModuleFramework.Libs.ZipLib.Zlib.DeflateStream"/>,
+        ///   This class is similar to <see cref="Dym.Libs.ZipLib.Zlib.DeflateStream"/>,
         ///   except that this implementation uses an approach that employs
         ///   multiple worker threads to perform the DEFLATE.  On a multi-cpu or
         ///   multi-core computer, the performance of this class can be
@@ -420,7 +420,7 @@ namespace ModuleFramework.Libs.ZipLib.Zlib
         ///   memory but may result in less effective compression.  For example,
         ///   using the default buffer size of 128k, the compression delivered is
         ///   within 1% of the compression delivered by the single-threaded <see
-        ///   cref="ModuleFramework.Libs.ZipLib.Zlib.DeflateStream"/>.  On the other hand, using a
+        ///   cref="Dym.Libs.ZipLib.Zlib.DeflateStream"/>.  On the other hand, using a
         ///   BufferSize of 8k can result in a compressed data stream that is 5%
         ///   larger than that delivered by the single-threaded
         ///   <c>DeflateStream</c>.  Excessively small buffer sizes can also cause
@@ -514,7 +514,7 @@ namespace ModuleFramework.Libs.ZipLib.Zlib
         /// </para>
         ///
         /// <para>
-        ///   To decompress data, use the <see cref="ModuleFramework.Libs.ZipLib.Zlib.DeflateStream"/> class.
+        ///   To decompress data, use the <see cref="Dym.Libs.ZipLib.Zlib.DeflateStream"/> class.
         /// </para>
         ///
         /// </remarks>
@@ -996,7 +996,7 @@ namespace ModuleFramework.Libs.ZipLib.Zlib
 
                     // repeatedly write buffers as they become ready
                     WorkItem workitem = null;
-                    ModuleFramework.Libs.ZipLib.Zlib.CRC32 c= new ModuleFramework.Libs.ZipLib.Zlib.CRC32();
+                    Dym.Libs.ZipLib.Zlib.CRC32 c= new Dym.Libs.ZipLib.Zlib.CRC32();
                     do
                     {
                         workitem = _pool[_nextToWrite % _pc];

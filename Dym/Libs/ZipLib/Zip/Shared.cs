@@ -27,7 +27,7 @@ using System;
 using System.IO;
 using System.Security.Permissions;
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
     /// <summary>
     /// Collects general purpose utility methods.
@@ -871,7 +871,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
             {
                 _s.Seek(value, System.IO.SeekOrigin.Begin);
                 // workitem 10178
-                ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(_s);
+                Dym.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(_s);
             }
         }
 

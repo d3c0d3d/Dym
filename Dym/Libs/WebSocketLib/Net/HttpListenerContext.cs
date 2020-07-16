@@ -1,8 +1,8 @@
 using System;
 using System.Security.Principal;
-using ModuleFramework.Libs.WebSocketLib.Net.WebSockets;
+using Dym.Libs.WebSocketLib.Net.WebSockets;
 
-namespace ModuleFramework.Libs.WebSocketLib.Net
+namespace Dym.Libs.WebSocketLib.Net
 {
     /// <summary>
     /// Provides the access to the HTTP request and response objects used by

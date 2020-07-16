@@ -1,4 +1,4 @@
-namespace ModuleFramework.Libs.WebSocketLib.Server
+namespace Dym.Libs.WebSocketLib.Server
 {
     public enum ServerState
     {

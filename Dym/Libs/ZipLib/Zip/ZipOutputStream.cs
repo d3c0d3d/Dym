@@ -21,7 +21,7 @@
 // ------------------------------------------------------------------
 //
 // This module defines the ZipOutputStream class, which is a stream metaphor for
-// generating zip files.  This class does not depend on ModuleFramework.Libs.ZipLib.Zip.ZipFile, but rather
+// generating zip files.  This class does not depend on Dym.Libs.ZipLib.Zip.ZipFile, but rather
 // stands alongside it as an alternative "container" for ZipEntry.  It replicates a
 // subset of the properties, including these:
 //
@@ -46,9 +46,9 @@ using System;
 using System.Threading;
 using System.Collections.Generic;
 using System.IO;
-using ModuleFramework.Libs.ZipLib.Zip;
+using Dym.Libs.ZipLib.Zip;
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
     /// <summary>
     ///   Provides a stream metaphor for generating zip files.
@@ -60,7 +60,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
     ///   href="http://www.pkware.com/documents/casestudies/APPNOTE.TXT">specification
     ///   for zip files described by PKWare</see>.  The compression for this
     ///   implementation is provided by a managed-code version of Zlib, included with
-    ///   DotNetZip in the classes in the ModuleFramework.Libs.ZipLib.Zlib namespace.
+    ///   DotNetZip in the classes in the Dym.Libs.ZipLib.Zlib namespace.
     /// </para>
     ///
     /// <para>
@@ -345,13 +345,13 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         {
             // workitem 9307
             _outputStream = stream.CanRead ? stream : new CountingStream(stream);
-            CompressionLevel = ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel.Default;
-            CompressionMethod = ModuleFramework.Libs.ZipLib.Zip.CompressionMethod.Deflate;
+            CompressionLevel = Dym.Libs.ZipLib.Zlib.CompressionLevel.Default;
+            CompressionMethod = Dym.Libs.ZipLib.Zip.CompressionMethod.Deflate;
             _encryption = EncryptionAlgorithm.None;
             _entriesWritten = new Dictionary<String, ZipEntry>(StringComparer.Ordinal);
             _zip64 = Zip64Option.Never;
             _leaveUnderlyingStreamOpen = leaveOpen;
-            Strategy = ModuleFramework.Libs.ZipLib.Zlib.CompressionStrategy.Default;
+            Strategy = Dym.Libs.ZipLib.Zlib.CompressionStrategy.Default;
             _name = name ?? "(stream)";
 #if !NETCF
             ParallelDeflateThreshold = -1L;
@@ -463,7 +463,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// </remarks>
         ///
         /// <seealso cref="Password">ZipOutputStream.Password</seealso>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.Encryption">ZipEntry.Encryption</seealso>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipEntry.Encryption">ZipEntry.Encryption</seealso>
         public EncryptionAlgorithm Encryption
         {
             get
@@ -514,9 +514,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   work better on different sorts of data. The strategy parameter can affect
         ///   the compression ratio and the speed of compression but not the correctness
         ///   of the compresssion.  For more information see <see
-        ///   cref="ModuleFramework.Libs.ZipLib.Zlib.CompressionStrategy "/>.
+        ///   cref="Dym.Libs.ZipLib.Zlib.CompressionStrategy "/>.
         /// </remarks>
-        public ModuleFramework.Libs.ZipLib.Zlib.CompressionStrategy Strategy
+        public Dym.Libs.ZipLib.Zlib.CompressionStrategy Strategy
         {
             get;
             set;
@@ -580,7 +580,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///    alone, and accept the default.
         ///  </para>
         /// </remarks>
-        public ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel CompressionLevel
+        public Dym.Libs.ZipLib.Zlib.CompressionLevel CompressionLevel
         {
             get;
             set;
@@ -589,7 +589,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// <summary>
         ///   The compression method used on each entry added to the ZipOutputStream.
         /// </summary>
-        public ModuleFramework.Libs.ZipLib.Zip.CompressionMethod CompressionMethod
+        public Dym.Libs.ZipLib.Zip.CompressionMethod CompressionMethod
         {
             get;
             set;
@@ -869,7 +869,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                 }
                 else
                 {
-                    _alternateEncoding = ModuleFramework.Libs.ZipLib.Zip.ZipOutputStream.DefaultEncoding;
+                    _alternateEncoding = Dym.Libs.ZipLib.Zip.ZipOutputStream.DefaultEncoding;
                     _alternateEncodingUsage = ZipOption.Never;
                 }
             }
@@ -1016,7 +1016,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// The default text encoding used in zip archives.  It is numeric 437, also
         /// known as IBM437.
         /// </summary>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.ProvisionalAlternateEncoding"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.ProvisionalAlternateEncoding"/>
         public static System.Text.Encoding DefaultEncoding
         {
             get
@@ -1075,7 +1075,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///     Encryption. This is primarily because encryption tends to slow down
         ///     the entire pipeline. Also, multi-threaded compression gives less of an
         ///     advantage when using lower compression levels, for example <see
-        ///     cref="ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel.BestSpeed"/>.  You may have to perform
+        ///     cref="Dym.Libs.ZipLib.Zlib.CompressionLevel.BestSpeed"/>.  You may have to perform
         ///     some tests to determine the best approach for your situation.
         ///   </para>
         ///
@@ -1629,7 +1629,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         private string _name;
         private bool _DontIgnoreCase;
 #if !NETCF
-        internal ModuleFramework.Libs.ZipLib.Zlib.ParallelDeflateOutputStream ParallelDeflater;
+        internal Dym.Libs.ZipLib.Zlib.ParallelDeflateOutputStream ParallelDeflater;
         private long _ParallelDeflateThreshold;
         private int _maxBufferPairs = 16;
 #endif
@@ -1715,7 +1715,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         }
 
 #if !NETCF
-        public ModuleFramework.Libs.ZipLib.Zlib.ParallelDeflateOutputStream ParallelDeflater
+        public Dym.Libs.ZipLib.Zlib.ParallelDeflateOutputStream ParallelDeflater
         {
             get
             {
@@ -1758,7 +1758,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
             }
         }
 
-        public ModuleFramework.Libs.ZipLib.Zlib.CompressionStrategy Strategy
+        public Dym.Libs.ZipLib.Zlib.CompressionStrategy Strategy
         {
             get
             {

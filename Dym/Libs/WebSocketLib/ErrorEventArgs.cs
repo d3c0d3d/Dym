@@ -1,6 +1,6 @@
 using System;
 
-namespace ModuleFramework.Libs.WebSocketLib
+namespace Dym.Libs.WebSocketLib
 {
     /// <summary>
     /// Represents the event data for the <see cref="WebSocket.OnError"/> event.

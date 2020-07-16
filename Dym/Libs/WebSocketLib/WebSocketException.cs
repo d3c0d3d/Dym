@@ -1,6 +1,6 @@
 using System;
 
-namespace ModuleFramework.Libs.WebSocketLib
+namespace Dym.Libs.WebSocketLib
 {
     /// <summary>
     /// The exception that is thrown when a fatal error occurs in

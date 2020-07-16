@@ -1,4 +1,4 @@
-namespace ModuleFramework.Libs.WebSocketLib
+namespace Dym.Libs.WebSocketLib
 {
     /// <summary>
     /// Indicates the status code for the WebSocket connection close.

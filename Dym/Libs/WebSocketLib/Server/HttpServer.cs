@@ -3,11 +3,11 @@ using System.IO;
 using System.Security.Principal;
 using System.Text;
 using System.Threading;
-using ModuleFramework.Libs.WebSocketLib.Net;
-using ModuleFramework.Libs.WebSocketLib.Net.WebSockets;
-using ModuleFramework.Logging;
+using Dym.Logging;
+using Dym.Libs.WebSocketLib.Net;
+using Dym.Libs.WebSocketLib.Net.WebSockets;
 
-namespace ModuleFramework.Libs.WebSocketLib.Server
+namespace Dym.Libs.WebSocketLib.Server
 {
     /// <summary>
     /// Provides a simple HTTP server that allows to accept

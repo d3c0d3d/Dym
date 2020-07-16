@@ -1,11 +1,11 @@
-using ModuleFramework.Logging;
+using Dym.Logging;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Security.Principal;
 
-namespace ModuleFramework.Libs.WebSocketLib.Net.WebSockets
+namespace Dym.Libs.WebSocketLib.Net.WebSockets
 {
     /// <summary>
     /// Provides the access to the information in a WebSocket handshake request to

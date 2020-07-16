@@ -27,7 +27,7 @@
 using System;
 using System.IO;
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
 
     public partial class ZipEntry
@@ -43,7 +43,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   out the <c>ExtractWithPassword()</c> methods.
         /// </overloads>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.ExtractExistingFile"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipEntry.ExtractExistingFile"/>
         /// <seealso cref="ZipEntry.Extract(ExtractExistingFileAction)"/>
         ///
         /// <remarks>
@@ -134,8 +134,8 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///
         /// <param name="baseDirectory">the pathname of the base directory</param>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.ExtractExistingFile"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.Extract(string, ExtractExistingFileAction)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipEntry.ExtractExistingFile"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipEntry.Extract(string, ExtractExistingFileAction)"/>
         ///
         /// <example>
         /// This example extracts only the entries in a zip file that are .txt files,
@@ -251,15 +251,15 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   the right one for you...
         /// </overloads>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.ExtractExistingFile"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.ExtractWithPassword(ExtractExistingFileAction, string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipEntry.ExtractExistingFile"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipEntry.ExtractWithPassword(ExtractExistingFileAction, string)"/>
         ///
         /// <remarks>
         ///
         /// <para>
         ///   Existing entries in the filesystem will not be overwritten. If you
         ///   would like to force the overwrite of existing files, see the <see
-        ///   cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.ExtractExistingFile"/>property, or call
+        ///   cref="Dym.Libs.ZipLib.Zip.ZipEntry.ExtractExistingFile"/>property, or call
         ///   <see
         ///   cref="ExtractWithPassword(ExtractExistingFileAction,string)"/>.
         /// </para>
@@ -310,14 +310,14 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   directory, and using the specified password.
         /// </summary>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.ExtractExistingFile"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.ExtractWithPassword(string, ExtractExistingFileAction, string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipEntry.ExtractExistingFile"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipEntry.ExtractWithPassword(string, ExtractExistingFileAction, string)"/>
         ///
         /// <remarks>
         /// <para>
         ///   Existing entries in the filesystem will not be overwritten. If you
         ///   would like to force the overwrite of existing files, see the <see
-        ///   cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.ExtractExistingFile"/>property, or call
+        ///   cref="Dym.Libs.ZipLib.Zip.ZipEntry.ExtractExistingFile"/>property, or call
         ///   <see
         ///   cref="ExtractWithPassword(ExtractExistingFileAction,string)"/>.
         /// </para>
@@ -503,7 +503,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// using (ZipFile zip = new ZipFile(ZipFileToRead))
         /// {
         ///   ZipEntry e1= zip["Elevation.mp3"];
-        ///   using (ModuleFramework.Libs.ZipLib.Zlib.CrcCalculatorStream s = e1.OpenReader())
+        ///   using (Dym.Libs.ZipLib.Zlib.CrcCalculatorStream s = e1.OpenReader())
         ///   {
         ///     byte[] buffer = new byte[4096];
         ///     int n, totalBytesRead= 0;
@@ -521,7 +521,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// <code lang="VB">
         ///   Using zip As New ZipFile(ZipFileToRead)
         ///       Dim e1 As ZipEntry = zip.Item("Elevation.mp3")
-        ///       Using s As ModuleFramework.Libs.ZipLib.Zlib.CrcCalculatorStream = e1.OpenReader
+        ///       Using s As Dym.Libs.ZipLib.Zlib.CrcCalculatorStream = e1.OpenReader
         ///           Dim n As Integer
         ///           Dim buffer As Byte() = New Byte(4096) {}
         ///           Dim totalBytesRead As Integer = 0
@@ -539,7 +539,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   End Using
         /// </code>
         /// </example>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.Extract(System.IO.Stream)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipEntry.Extract(System.IO.Stream)"/>
         /// <returns>The Stream for reading.</returns>
         public Crc.CrcCalculatorStream OpenReader()
         {
@@ -600,7 +600,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
 
             this.ArchiveStream.Seek(this.FileDataPosition, SeekOrigin.Begin);
             // workitem 10178
-            ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
+            Dym.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
 
             _inputDecryptorStream = GetExtractDecryptor(input);
             Stream input3 = GetExtractDecompressor(_inputDecryptorStream);
@@ -907,7 +907,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                 if (input is WinZipAesCipherStream)
                     wzs = input as WinZipAesCipherStream;
 
-                else if (input is ModuleFramework.Libs.ZipLib.Zlib.CrcCalculatorStream)
+                else if (input is Dym.Libs.ZipLib.Zlib.CrcCalculatorStream)
                 {
                     xxx;
                 }
@@ -1019,7 +1019,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                 // change for workitem 8098
                 input.Seek(this.FileDataPosition, SeekOrigin.Begin);
                 // workitem 10178
-                ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(input);
+                Dym.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(input);
 
                 byte[] bytes = new byte[BufferSize];
 
@@ -1098,7 +1098,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                 case (short)CompressionMethod.None:
                     return input2;
                 case (short)CompressionMethod.Deflate:
-                    return new ModuleFramework.Libs.ZipLib.Zlib.DeflateStream(input2, ModuleFramework.Libs.ZipLib.Zlib.CompressionMode.Decompress, true);
+                    return new Dym.Libs.ZipLib.Zlib.DeflateStream(input2, Dym.Libs.ZipLib.Zlib.CompressionMode.Decompress, true);
 #if BZIP
                 case (short)CompressionMethod.BZip2:
                     return new Ionic.BZip2.BZip2InputStream(input2, true);
@@ -1182,7 +1182,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                 else
                 {
                     // workitem 6191
-                    DateTime AdjustedLastModified = ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.AdjustTime_Reverse(LastModified);
+                    DateTime AdjustedLastModified = Dym.Libs.ZipLib.Zip.SharedUtilities.AdjustTime_Reverse(LastModified);
 
 #if NETCF
                     int rc = NetCfFile.SetLastWriteTime(fileOrDirectory, AdjustedLastModified);
@@ -1350,7 +1350,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
 
                 this.ArchiveStream.Seek(this.FileDataPosition - 12, SeekOrigin.Begin);
                 // workitem 10178
-                ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
+                Dym.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
                 _zipCrypto_forExtract = ZipCrypto.ForRead(password, this);
             }
 
@@ -1372,7 +1372,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                     int sizeOfSaltAndPv = GetLengthOfCryptoHeaderBytes(_Encryption_FromZipFile);
                     this.ArchiveStream.Seek(this.FileDataPosition - sizeOfSaltAndPv, SeekOrigin.Begin);
                     // workitem 10178
-                    ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
+                    Dym.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
                     int keystrength = GetKeyStrengthInBits(_Encryption_FromZipFile);
                     _aesCrypto_forExtract = WinZipAesCrypto.ReadFromStream(password, keystrength, this.ArchiveStream);
                 }

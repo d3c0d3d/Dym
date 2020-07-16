@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Dym.OptionCommand;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace ModuleFramework.OptionCommand
+namespace Dym.OptionCommand
 {
     public abstract class Option
     {
@@ -31,8 +32,8 @@ namespace ModuleFramework.OptionCommand
                     $"Cannot provide maxValueCount of {maxValueCount} for OptionValueType.None.",
                   nameof(maxValueCount));
             if (Array.IndexOf(Names, "<>") >= 0 &&
-                ((Names.Length == 1 && OptionValueType != OptionValueType.None) ||
-                 (Names.Length > 1 && MaxValueCount > 1)))
+                (Names.Length == 1 && OptionValueType != OptionValueType.None ||
+                 Names.Length > 1 && MaxValueCount > 1))
                 throw new ArgumentException(
                   "The default option handler '<>' cannot require values.",
                   nameof(prototype));

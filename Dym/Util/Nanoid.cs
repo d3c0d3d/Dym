@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace ModuleFramework.Util
+namespace Dym.Util
 {
     public static class Nanoid
     {

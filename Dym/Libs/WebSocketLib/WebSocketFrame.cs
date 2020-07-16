@@ -1,11 +1,11 @@
-using ModuleFramework.Libs.WebSocketLib;
+using Dym.Libs.WebSocketLib;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace ModuleFramework.Libs.WebSocketLib
+namespace Dym.Libs.WebSocketLib
 {
     public class WebSocketFrame : IEnumerable<byte>
     {

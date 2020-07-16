@@ -25,10 +25,10 @@
 //
 // ------------------------------------------------------------------
 
-using ModuleFramework.Libs.ZipLib.Crc;
+using Dym.Libs.ZipLib.Crc;
 using System;
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
     /// <summary>
     ///   This class implements the "traditional" or "classic" PKZip encryption,

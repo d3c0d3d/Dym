@@ -30,7 +30,7 @@ using System;
 using System.Runtime.InteropServices;
 using Interop = System.Runtime.InteropServices;
 
-namespace ModuleFramework.Libs.ZipLib.Crc
+namespace Dym.Libs.ZipLib.Crc
 {
     /// <summary>
     ///   Computes a CRC-32. The CRC-32 algorithm is parameterized - you

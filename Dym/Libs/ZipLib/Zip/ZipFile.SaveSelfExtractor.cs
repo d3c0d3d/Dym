@@ -64,7 +64,7 @@ using System.IO;
 using System.Collections.Generic;
 
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
 #if !NO_SFX
     /// <summary>
@@ -329,7 +329,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   The default behavvior is to Throw.
         /// </para>
         /// </remarks>
-        public ModuleFramework.Libs.ZipLib.Zip.ExtractExistingFileAction ExtractExistingFile
+        public Dym.Libs.ZipLib.Zip.ExtractExistingFileAction ExtractExistingFile
         {
             get;
             set;
@@ -501,9 +501,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                 ReferencedAssemblies= new List<string>{
                     "System.dll", "System.Windows.Forms.dll", "System.Drawing.dll"},
                 CopyThroughResources = new List<string>{
-                    "ModuleFramework.Libs.ZipLib.Zip.WinFormsSelfExtractorStub.resources",
-                    "ModuleFramework.Libs.ZipLib.Zip.Forms.PasswordDialog.resources",
-                    "ModuleFramework.Libs.ZipLib.Zip.Forms.ZipContentsDialog.resources"},
+                    "Dym.Libs.ZipLib.Zip.WinFormsSelfExtractorStub.resources",
+                    "Dym.Libs.ZipLib.Zip.Forms.PasswordDialog.resources",
+                    "Dym.Libs.ZipLib.Zip.Forms.ZipContentsDialog.resources"},
                 ResourcesToCompile = new List<string>{
                     "WinFormsSelfExtractorStub.cs",
                     "WinFormsSelfExtractorStub.Designer.cs", // .Designer.cs?
@@ -527,7 +527,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         //string _defaultExtractLocation;
         //string _postExtractCmdLine;
         //         string _SetDefaultLocationCode =
-        //         "namespace ModuleFramework.Libs.ZipLib.Zip { public partial class WinFormsSelfExtractorStub { partial void _SetDefaultExtractLocation() {" +
+        //         "namespace Dym.Libs.ZipLib.Zip { public partial class WinFormsSelfExtractorStub { partial void _SetDefaultExtractLocation() {" +
         //         " txtExtractDirectory.Text = \"@@VALUE\"; } }}";
 
 
@@ -755,7 +755,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                 tmpDir = TempFileFolder ?? Path.GetDirectoryName(exeToGenerate);
                 stubExe = GenerateTempPathname(tmpDir, "exe");
 
-                // get the ModuleFramework.Libs.ZipLib.Zip assembly
+                // get the Dym.Libs.ZipLib.Zip assembly
                 Assembly a1 = typeof(ZipFile).Assembly;
 
                 using (var csharp = new Microsoft.CSharp.CSharpCodeProvider
@@ -784,7 +784,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                     if (settings == null)
                         throw new BadStateException(String.Format("While saving a Self-Extracting Zip, Cannot find that flavor ({0})?", options.Flavor));
 
-                    // This is the list of referenced assemblies.  ModuleFramework.Libs.ZipLib.Zip is
+                    // This is the list of referenced assemblies.  Dym.Libs.ZipLib.Zip is
                     // needed here.  Also if it is the winforms (gui) extractor, we
                     // need other referenced assemblies, like
                     // System.Windows.Forms.dll, etc.
@@ -825,7 +825,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
 
 
                     // all the source code is embedded in the DLL as a zip file.
-                    using (ZipFile zip = ZipFile.Read(a2.GetManifestResourceStream("ModuleFramework.Libs.ZipLib.Zip.Resources.ZippedResources.zip")))
+                    using (ZipFile zip = ZipFile.Read(a2.GetManifestResourceStream("Dym.Libs.ZipLib.Zip.Resources.ZippedResources.zip")))
                     {
                         // // debugging: enumerate the files in the embedded zip
                         // Console.WriteLine("Entries in the embbedded zip:");
@@ -839,7 +839,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
 
                         if (String.IsNullOrEmpty(options.IconFile))
                         {
-                            // Use the ico file that is embedded into the ModuleFramework.Libs.ZipLib.Zip
+                            // Use the ico file that is embedded into the Dym.Libs.ZipLib.Zip
                             // DLL itself.  To do this we must unpack the icon to
                             // the filesystem, in order to specify it on the cmdline
                             // of csc.exe.  This method will remove the unpacked

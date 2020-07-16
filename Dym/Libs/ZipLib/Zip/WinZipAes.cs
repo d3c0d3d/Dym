@@ -34,7 +34,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 
 #if AESCRYPTO
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
     /// <summary>
     ///   This is a helper class supporting WinZip AES encryption.
@@ -165,7 +165,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                 {
                     PasswordVerificationGenerated = (Int16)(GeneratedPV[0] + GeneratedPV[1] * 256);
                     if (PasswordVerificationGenerated != PasswordVerificationStored)
-                        throw new ModuleFramework.Libs.ZipLib.Zip.BadPasswordException();
+                        throw new Dym.Libs.ZipLib.Zip.BadPasswordException();
                 }
             }
             private get
@@ -234,7 +234,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
             }
 
             if (invalid)
-                throw new ModuleFramework.Libs.ZipLib.Zip.BadStateException("The MAC does not match.");
+                throw new Dym.Libs.ZipLib.Zip.BadStateException("The MAC does not match.");
         }
 
     }

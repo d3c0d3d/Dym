@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 
-namespace ModuleFramework.Util
+namespace Dym.Util
 {
     public class CryptoRandom : Random
     {

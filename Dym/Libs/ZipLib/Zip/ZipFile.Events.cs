@@ -27,7 +27,7 @@
 using System;
 using System.IO;
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
     public partial class ZipFile
     {
@@ -512,9 +512,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///
         /// </example>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.ReadProgress"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddProgress"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.ExtractProgress"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.ReadProgress"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddProgress"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.ExtractProgress"/>
         public event EventHandler<SaveProgressEventArgs> SaveProgress;
 
 
@@ -634,9 +634,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// </list>
         /// </remarks>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.SaveProgress"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddProgress"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.ExtractProgress"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.SaveProgress"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddProgress"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.ExtractProgress"/>
         public event EventHandler<ReadProgressEventArgs> ReadProgress;
 
         private void OnReadStarted()
@@ -848,9 +848,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.SaveProgress"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.ReadProgress"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddProgress"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.SaveProgress"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.ReadProgress"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddProgress"/>
         public event EventHandler<ExtractProgressEventArgs> ExtractProgress;
 
 
@@ -1018,9 +1018,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///
         /// </example>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.SaveProgress"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.ReadProgress"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.ExtractProgress"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.SaveProgress"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.ReadProgress"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.ExtractProgress"/>
         public event EventHandler<AddProgressEventArgs> AddProgress;
 
         private void OnAddStarted()
@@ -1172,7 +1172,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// </code>
         ///
         /// <code lang="VB">
-        /// Private Sub MyZipError(ByVal sender As Object, ByVal e As ModuleFramework.Libs.ZipLib.Zip.ZipErrorEventArgs)
+        /// Private Sub MyZipError(ByVal sender As Object, ByVal e As Dym.Libs.ZipLib.Zip.ZipErrorEventArgs)
         ///     ' At this point, the application could prompt the user for an action to take.
         ///     ' But in this case, this application will simply automatically skip the file, in case of error.
         ///     Console.WriteLine("Zip Error,  entry {0}", e.CurrentEntry.FileName)
@@ -1196,7 +1196,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.ZipErrorAction"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.ZipErrorAction"/>
         public event EventHandler<ZipErrorEventArgs> ZipError;
 
         internal bool OnZipErrorSaving(ZipEntry entry, Exception exc)

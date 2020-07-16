@@ -1,7 +1,7 @@
 using System;
-using ModuleFramework.Libs.WebSocketLib.Net.WebSockets;
+using Dym.Libs.WebSocketLib.Net.WebSockets;
 
-namespace ModuleFramework.Libs.WebSocketLib.Server
+namespace Dym.Libs.WebSocketLib.Server
 {
     /// <summary>
     /// Exposes the properties used to access the information in a session in a WebSocket service.

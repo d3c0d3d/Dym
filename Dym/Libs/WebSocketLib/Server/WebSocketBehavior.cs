@@ -1,10 +1,10 @@
 using System;
 using System.IO;
-using ModuleFramework.Libs.WebSocketLib.Net;
-using ModuleFramework.Libs.WebSocketLib.Net.WebSockets;
-using ModuleFramework.Logging;
+using Dym.Logging;
+using Dym.Libs.WebSocketLib.Net;
+using Dym.Libs.WebSocketLib.Net.WebSockets;
 
-namespace ModuleFramework.Libs.WebSocketLib.Server
+namespace Dym.Libs.WebSocketLib.Server
 {
     /// <summary>
     /// Exposes a set of methods and properties used to define the behavior of

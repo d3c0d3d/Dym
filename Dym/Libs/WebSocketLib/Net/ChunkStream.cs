@@ -5,7 +5,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-namespace ModuleFramework.Libs.WebSocketLib.Net
+namespace Dym.Libs.WebSocketLib.Net
 {
     public class ChunkStream
     {

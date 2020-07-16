@@ -1,4 +1,4 @@
-﻿namespace ModuleFramework
+﻿namespace Dym
 {
     public enum ModuleType
     {

@@ -557,9 +557,9 @@ namespace Ionic
     /// <para>
     ///   The FileSelector class is used internally by the ZipFile class for selecting
     ///   files for inclusion into the ZipFile, when the <see
-    ///   cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddSelectedFiles(String,String)"/> method, or one of
+    ///   cref="Dym.Libs.ZipLib.Zip.ZipFile.AddSelectedFiles(String,String)"/> method, or one of
     ///   its overloads, is called.  It's also used for the <see
-    ///   cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.ExtractSelectedEntries(String)"/> methods.  Typically, an
+    ///   cref="Dym.Libs.ZipLib.Zip.ZipFile.ExtractSelectedEntries(String)"/> methods.  Typically, an
     ///   application that creates or manipulates Zip archives will not directly
     ///   interact with the FileSelector class.
     /// </para>

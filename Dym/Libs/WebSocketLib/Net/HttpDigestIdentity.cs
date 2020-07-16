@@ -1,7 +1,7 @@
 using System.Collections.Specialized;
 using System.Security.Principal;
 
-namespace ModuleFramework.Libs.WebSocketLib.Net
+namespace Dym.Libs.WebSocketLib.Net
 {
     /// <summary>
     /// Holds the username and other parameters from

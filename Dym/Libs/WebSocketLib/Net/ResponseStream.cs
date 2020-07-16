@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace ModuleFramework.Libs.WebSocketLib.Net
+namespace Dym.Libs.WebSocketLib.Net
 {
     public class ResponseStream : Stream
     {

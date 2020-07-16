@@ -1,4 +1,4 @@
-namespace ModuleFramework.Libs.WebSocketLib
+namespace Dym.Libs.WebSocketLib
 {
     /// <summary>
     /// Indicates the state of a WebSocket connection.

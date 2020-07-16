@@ -1,11 +1,11 @@
-using ModuleFramework.Logging;
+using Dym.Logging;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Principal;
 
 // TODO: Logging.
-namespace ModuleFramework.Libs.WebSocketLib.Net
+namespace Dym.Libs.WebSocketLib.Net
 {
     /// <summary>
     /// Provides a simple, programmatically controlled HTTP listener.

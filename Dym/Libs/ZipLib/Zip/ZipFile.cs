@@ -44,7 +44,7 @@ using System.Collections.Generic;
 using Interop = System.Runtime.InteropServices;
 
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
     /// <summary>
     ///   The ZipFile type represents a zip archive file.
@@ -57,7 +57,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
     ///   href="http://www.pkware.com/documents/casestudies/APPNOTE.TXT">specification
     ///   for zip files described by PKWare</see>.  The compression for this
     ///   implementation is provided by a managed-code version of Zlib, included with
-    ///   DotNetZip in the classes in the ModuleFramework.Libs.ZipLib.Zlib namespace.
+    ///   DotNetZip in the classes in the Dym.Libs.ZipLib.Zlib namespace.
     /// </para>
     ///
     /// <para>
@@ -398,9 +398,9 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   parameter can affect the compression ratio and the speed of
         ///   compression but not the correctness of the compresssion.  For more
         ///   information see <see
-        ///   cref="ModuleFramework.Libs.ZipLib.Zlib.CompressionStrategy">ModuleFramework.Libs.ZipLib.Zlib.CompressionStrategy</see>.
+        ///   cref="Dym.Libs.ZipLib.Zlib.CompressionStrategy">Dym.Libs.ZipLib.Zlib.CompressionStrategy</see>.
         /// </remarks>
-        public ModuleFramework.Libs.ZipLib.Zlib.CompressionStrategy Strategy
+        public Dym.Libs.ZipLib.Zlib.CompressionStrategy Strategy
         {
             get { return _Strategy; }
             set { _Strategy = value; }
@@ -471,7 +471,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///    alone, and accept the default.
         ///  </para>
         /// </remarks>
-        public ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel CompressionLevel
+        public Dym.Libs.ZipLib.Zlib.CompressionLevel CompressionLevel
         {
             get;
             set;
@@ -485,8 +485,8 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///     By default, the compression method is <c>CompressionMethod.Deflate.</c>
         ///   </para>
         /// </remarks>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.CompressionMethod" />
-        public ModuleFramework.Libs.ZipLib.Zip.CompressionMethod CompressionMethod
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.CompressionMethod" />
+        public Dym.Libs.ZipLib.Zip.CompressionMethod CompressionMethod
         {
             get
             {
@@ -972,7 +972,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                 }
                 else
                 {
-                    _alternateEncoding = ModuleFramework.Libs.ZipLib.Zip.ZipFile.DefaultEncoding;
+                    _alternateEncoding = Dym.Libs.ZipLib.Zip.ZipFile.DefaultEncoding;
                     _alternateEncodingUsage = ZipOption.Never;
                 }
             }
@@ -1316,7 +1316,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.DefaultEncoding">DefaultEncoding</seealso>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.DefaultEncoding">DefaultEncoding</seealso>
         [Obsolete("use AlternateEncoding instead.")]
         public System.Text.Encoding ProvisionalAlternateEncoding
         {
@@ -1379,7 +1379,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// The default text encoding used in zip archives.  It is numeric 437, also
         /// known as IBM437.
         /// </summary>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.ProvisionalAlternateEncoding"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.ProvisionalAlternateEncoding"/>
         public static System.Text.Encoding DefaultEncoding
         {
             get
@@ -1667,8 +1667,8 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///
         /// </example>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.Encryption">ZipFile.Encryption</seealso>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.Password">ZipEntry.Password</seealso>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.Encryption">ZipFile.Encryption</seealso>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipEntry.Password">ZipEntry.Password</seealso>
         public String Password
         {
             set
@@ -1712,7 +1712,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   to be extracted does not already exist.
         /// </para>
         /// </remarks>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.ExtractExistingFile"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipEntry.ExtractExistingFile"/>
         public ExtractExistingFileAction ExtractExistingFile
         {
             get;
@@ -1809,8 +1809,8 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// </code>
         /// </example>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.ZipErrorAction"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.ZipError"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipEntry.ZipErrorAction"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.ZipError"/>
 
         public ZipErrorAction ZipErrorAction
         {
@@ -1944,8 +1944,8 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///
         /// </example>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.Password">ZipFile.Password</seealso>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.Encryption">ZipEntry.Encryption</seealso>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.Password">ZipFile.Password</seealso>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipEntry.Encryption">ZipEntry.Encryption</seealso>
         public EncryptionAlgorithm Encryption
         {
             get
@@ -1982,7 +1982,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   the <c>ZipFile</c> or on each <c>ZipEntry</c> to determine the level of
         ///   compression used. This is done at the time the entry is added to the
         ///   <c>ZipFile</c>. Setting the property to
-        ///   <c>ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel.None</c> means no compression will be used.
+        ///   <c>Dym.Libs.ZipLib.Zlib.CompressionLevel.None</c> means no compression will be used.
         /// </para>
         ///
         /// <para>
@@ -2182,7 +2182,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///     using Encryption. This is primarily because encryption tends to slow
         ///     down the entire pipeline. Also, multi-threaded compression gives less
         ///     of an advantage when using lower compression levels, for example <see
-        ///     cref="ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel.BestSpeed"/>.  You may have to
+        ///     cref="Dym.Libs.ZipLib.Zlib.CompressionLevel.BestSpeed"/>.  You may have to
         ///     perform some tests to determine the best approach for your situation.
         ///   </para>
         ///
@@ -2447,7 +2447,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///
         /// </remarks>
         ///
-        /// <exception cref="ModuleFramework.Libs.ZipLib.Zip.ZipException">
+        /// <exception cref="Dym.Libs.ZipLib.Zip.ZipException">
         /// Thrown if name refers to an existing file that is not a valid zip file.
         /// </exception>
         ///
@@ -2520,7 +2520,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///
         /// </remarks>
         ///
-        /// <exception cref="ModuleFramework.Libs.ZipLib.Zip.ZipException">
+        /// <exception cref="Dym.Libs.ZipLib.Zip.ZipException">
         /// Thrown if name refers to an existing file that is not a valid zip file.
         /// </exception>
         ///
@@ -2666,7 +2666,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///
         /// </remarks>
         ///
-        /// <exception cref="ModuleFramework.Libs.ZipLib.Zip.ZipException">
+        /// <exception cref="Dym.Libs.ZipLib.Zip.ZipException">
         /// Thrown if name refers to an existing file that is not a valid zip file.
         /// </exception>
         ///
@@ -2758,7 +2758,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///
         /// </remarks>
         ///
-        /// <exception cref="ModuleFramework.Libs.ZipLib.Zip.ZipException">
+        /// <exception cref="Dym.Libs.ZipLib.Zip.ZipException">
         /// Thrown if <c>fileName</c> refers to an existing file that is not a valid zip file.
         /// </exception>
         ///
@@ -2840,7 +2840,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
             _StatusMessageTextWriter = statusMessageWriter;
             _contentsChanged = true;
             AddDirectoryWillTraverseReparsePoints = true;  // workitem 8617
-            CompressionLevel = ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel.Default;
+            CompressionLevel = Dym.Libs.ZipLib.Zlib.CompressionLevel.Default;
 #if !NETCF
             ParallelDeflateThreshold = 512 * 1024;
 #endif
@@ -2982,7 +2982,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   End Using
         /// </code>
         /// </example>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.RemoveEntry(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.RemoveEntry(string)"/>
         ///
         /// <exception cref="System.ArgumentException">
         ///   Thrown if the caller attempts to assign a non-null value to the indexer.
@@ -3076,7 +3076,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   to swap forward slashes for backslashes.
         /// </remarks>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.this[string]"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.this[string]"/>
         ///
         /// <example>
         ///   This example shows one way to test if a filename is already contained
@@ -3309,7 +3309,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// The <c>ZipEntry</c> to remove from the zip.
         /// </param>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.RemoveSelectedEntries(string)"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.RemoveSelectedEntries(string)"/>
         ///
         public void RemoveEntry(ZipEntry entry)
         {
@@ -3614,8 +3614,8 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         internal string _Password;
         private bool _emitNtfsTimes = true;
         private bool _emitUnixTimes;
-        private ModuleFramework.Libs.ZipLib.Zlib.CompressionStrategy _Strategy = ModuleFramework.Libs.ZipLib.Zlib.CompressionStrategy.Default;
-        private ModuleFramework.Libs.ZipLib.Zip.CompressionMethod _compressionMethod = ModuleFramework.Libs.ZipLib.Zip.CompressionMethod.Deflate;
+        private Dym.Libs.ZipLib.Zlib.CompressionStrategy _Strategy = Dym.Libs.ZipLib.Zlib.CompressionStrategy.Default;
+        private Dym.Libs.ZipLib.Zip.CompressionMethod _compressionMethod = Dym.Libs.ZipLib.Zip.CompressionMethod.Deflate;
         private bool _fileAlreadyExists;
         private string _temporaryFileName;
         private bool _contentsChanged;
@@ -3640,7 +3640,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         private int _BufferSize = BufferSizeDefault;
 
 #if !NETCF
-        internal ModuleFramework.Libs.ZipLib.Zlib.ParallelDeflateOutputStream ParallelDeflater;
+        internal Dym.Libs.ZipLib.Zlib.ParallelDeflateOutputStream ParallelDeflater;
         private long _ParallelDeflateThreshold;
         private int _maxBufferPairs = 16;
 #endif

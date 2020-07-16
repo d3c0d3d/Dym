@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Dym.Util;
+using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace ModuleFramework
+namespace Dym
 {
     public class ModuleLoader : MarshalByRefObject
     {
@@ -20,7 +21,7 @@ namespace ModuleFramework
         public void Startup(IModuleHost moduleHost, byte[] asmRaw)
         {
             if (_moduleAssemby == null)
-            {                   
+            {
                 _moduleAssemby = AppDomain.CurrentDomain.Load(asmRaw);
 
                 AssemblyHash = Utilities.GetSHA256ChecksumFromString(asmRaw.ToHex(false));
@@ -31,7 +32,7 @@ namespace ModuleFramework
 
         public void Startup(IModuleHost moduleHost, string assemblyPath)
         {
-            if(_moduleAssemby == null)
+            if (_moduleAssemby == null)
             {
                 var fileBytes = File.ReadAllBytes(assemblyPath);
                 _moduleAssemby = AppDomain.CurrentDomain.Load(fileBytes);
@@ -52,14 +53,14 @@ namespace ModuleFramework
             var type = types.FirstOrDefault(t => t.GetInterface(nameof(IModule)) != null);
             if (type != null && _moduleInstance == null)
             {
-                _moduleInstance = (IModule)Activator.CreateInstance(type, null, null);                
-                _moduleInstance.Startup(moduleHost,AssemblyHash);
+                _moduleInstance = (IModule)Activator.CreateInstance(type, null, null);
+                _moduleInstance.Startup(moduleHost, AssemblyHash);
 
                 ModuleType = _moduleInstance.ModuleType;
                 Uid = new Guid(_moduleInstance.Uid);
                 SessionKey = _moduleInstance.SessionKey;
                 FriendlyName = _moduleInstance.FriendlyName;
-                Version = _moduleInstance.Version;                
+                Version = _moduleInstance.Version;
             }
         }
 
@@ -70,8 +71,8 @@ namespace ModuleFramework
             {
                 return;
             }
-            _moduleInstance.Load(parms);            
-        }        
+            _moduleInstance.Load(parms);
+        }
 
         public void Dispose(params string[] parms)
         {
@@ -83,7 +84,7 @@ namespace ModuleFramework
             IsStarted = false;
         }
 
-        public void SendMessages(Guid uidFrom,string name, params string[] messages)
+        public void SendMessages(Guid uidFrom, string name, params string[] messages)
         {
             if (_moduleInstance == null)
             {

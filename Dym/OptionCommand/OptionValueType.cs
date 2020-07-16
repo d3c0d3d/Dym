@@ -1,4 +1,4 @@
-﻿namespace ModuleFramework.OptionCommand
+﻿namespace Dym.OptionCommand
 {
     public enum OptionValueType
     {

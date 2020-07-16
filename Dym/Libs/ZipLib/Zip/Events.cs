@@ -27,7 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
     /// <summary>
     ///   Delegate in which the application writes the <c>ZipEntry</c> content for the named entry.
@@ -38,7 +38,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
     ///
     /// <remarks>
     ///   When you add an entry and specify a <c>WriteDelegate</c>, via <see
-    ///   cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddEntry(string, WriteDelegate)"/>, the application
+    ///   cref="Dym.Libs.ZipLib.Zip.ZipFile.AddEntry(string, WriteDelegate)"/>, the application
     ///   code provides the logic that writes the entry data directly into the zip file.
     /// </remarks>
     ///
@@ -79,7 +79,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
     /// End Sub
     /// </code>
     /// </example>
-    /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddEntry(string, WriteDelegate)"/>
+    /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddEntry(string, WriteDelegate)"/>
     public delegate void WriteDelegate(string entryName, System.IO.Stream stream);
 
 
@@ -92,12 +92,12 @@ namespace ModuleFramework.Libs.ZipLib.Zip
     /// </param>
     ///
     /// <remarks>
-    ///   When you add an entry via <see cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddEntry(string,
+    ///   When you add an entry via <see cref="Dym.Libs.ZipLib.Zip.ZipFile.AddEntry(string,
     ///   OpenDelegate, CloseDelegate)"/>, the application code provides the logic that
     ///   opens and closes the stream for the given ZipEntry.
     /// </remarks>
     ///
-    /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddEntry(string, OpenDelegate, CloseDelegate)"/>
+    /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddEntry(string, OpenDelegate, CloseDelegate)"/>
     public delegate System.IO.Stream OpenDelegate(string entryName);
 
     /// <summary>
@@ -111,12 +111,12 @@ namespace ModuleFramework.Libs.ZipLib.Zip
     /// <param name="stream">The stream to be closed.</param>
     ///
     /// <remarks>
-    ///   When you add an entry via <see cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddEntry(string,
+    ///   When you add an entry via <see cref="Dym.Libs.ZipLib.Zip.ZipFile.AddEntry(string,
     ///   OpenDelegate, CloseDelegate)"/>, the application code provides the logic that
     ///   opens and closes the stream for the given ZipEntry.
     /// </remarks>
     ///
-    /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddEntry(string, OpenDelegate, CloseDelegate)"/>
+    /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.AddEntry(string, OpenDelegate, CloseDelegate)"/>
     public delegate void CloseDelegate(string entryName, System.IO.Stream stream);
 
     /// <summary>
@@ -132,8 +132,8 @@ namespace ModuleFramework.Libs.ZipLib.Zip
     ///   on any other factor.
     /// </para>
     /// </remarks>
-    /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.SetCompression"/>
-    public delegate ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel SetCompressionCallback(string localFileName, string fileNameInArchive);
+    /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.SetCompression"/>
+    public delegate Dym.Libs.ZipLib.Zlib.CompressionLevel SetCompressionCallback(string localFileName, string fileNameInArchive);
 
     /// <summary>
     ///   In an EventArgs type, indicates which sort of progress event is being

@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Dym.OptionCommand;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace ModuleFramework.OptionCommand
+namespace Dym.OptionCommand
 {
     public sealed class OptionSet : KeyedCollection<string, Option>
     {
@@ -329,8 +330,8 @@ namespace ModuleFramework.OptionCommand
         private bool ParseBool(string option, string n, OptionContext c)
         {
             string rn;
-            if (n.Length < 1 || (n[n.Length - 1] != '+' && n[n.Length - 1] != '-') ||
-                !Contains((rn = n.Substring(0, n.Length - 1))))
+            if (n.Length < 1 || n[n.Length - 1] != '+' && n[n.Length - 1] != '-' ||
+                !Contains(rn = n.Substring(0, n.Length - 1)))
             {
                 return false;
             }
@@ -528,7 +529,7 @@ namespace ModuleFramework.OptionCommand
                     case '}':
                         if (start < 0)
                         {
-                            if ((i + 1) == description.Length || description[i + 1] != '}')
+                            if (i + 1 == description.Length || description[i + 1] != '}')
                                 throw new InvalidOperationException("Invalid option description: " + description);
                             ++i;
                             sb.Append("}");
@@ -570,7 +571,7 @@ namespace ModuleFramework.OptionCommand
                 if (end < description.Length)
                 {
                     var c = description[end];
-                    if (c == '-' || (char.IsWhiteSpace(c) && c != '\n'))
+                    if (c == '-' || char.IsWhiteSpace(c) && c != '\n')
                         ++end;
                     else if (c != '\n')
                     {

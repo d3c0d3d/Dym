@@ -30,7 +30,7 @@ using System;
 using System.IO;
 using Interop = System.Runtime.InteropServices;
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
     /// <summary>
     /// Represents a single entry in a ZipFile. Typically, applications get a ZipEntry
@@ -54,7 +54,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         public ZipEntry()
         {
             _CompressionMethod = (Int16)CompressionMethod.Deflate;
-            _CompressionLevel = ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel.Default;
+            _CompressionLevel = Dym.Libs.ZipLib.Zlib.CompressionLevel.Default;
             _Encryption = EncryptionAlgorithm.None;
             _Source = ZipEntrySource.None;
             AlternateEncoding = System.Text.Encoding.GetEncoding("IBM437");
@@ -211,7 +211,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                 _LastModified = (value.Kind == DateTimeKind.Unspecified)
                     ? DateTime.SpecifyKind(value, DateTimeKind.Local)
                     : value.ToLocalTime();
-                _Mtime = ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.AdjustTime_Reverse(_LastModified).ToUniversalTime();
+                _Mtime = Dym.Libs.ZipLib.Zip.SharedUtilities.AdjustTime_Reverse(_LastModified).ToUniversalTime();
                 _metadataChanged = true;
             }
         }
@@ -372,7 +372,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///
         /// <seealso cref="AccessedTime"/>
         /// <seealso cref="CreationTime"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.LastModified"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipEntry.LastModified"/>
         /// <seealso cref="SetEntryTimes"/>
         public DateTime ModifiedTime
         {
@@ -1388,10 +1388,10 @@ namespace ModuleFramework.Libs.ZipLib.Zip
 
                 _CompressionMethod = (Int16)value;
 
-                if (_CompressionMethod == (Int16)ModuleFramework.Libs.ZipLib.Zip.CompressionMethod.None)
-                    _CompressionLevel = ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel.None;
-                else if (CompressionLevel == ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel.None)
-                    _CompressionLevel = ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel.Default;
+                if (_CompressionMethod == (Int16)Dym.Libs.ZipLib.Zip.CompressionMethod.None)
+                    _CompressionLevel = Dym.Libs.ZipLib.Zlib.CompressionLevel.None;
+                else if (CompressionLevel == Dym.Libs.ZipLib.Zlib.CompressionLevel.None)
+                    _CompressionLevel = Dym.Libs.ZipLib.Zlib.CompressionLevel.Default;
 
                 if (_container.ZipFile != null) _container.ZipFile.NotifyEntryChanged();
                 _restreamRequiredOnSave = true;
@@ -1441,7 +1441,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// </remarks>
         ///
         /// <seealso cref="CompressionMethod"/>
-        public ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel CompressionLevel
+        public Dym.Libs.ZipLib.Zlib.CompressionLevel CompressionLevel
         {
             get
             {
@@ -1453,18 +1453,18 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                     _CompressionMethod != (short)CompressionMethod.None)
                     return ; // no effect
 
-                if (value == ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel.Default &&
+                if (value == Dym.Libs.ZipLib.Zlib.CompressionLevel.Default &&
                     _CompressionMethod == (short)CompressionMethod.Deflate) return; // nothing to do
                 _CompressionLevel = value;
 
-                if (value == ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel.None &&
+                if (value == Dym.Libs.ZipLib.Zlib.CompressionLevel.None &&
                     _CompressionMethod == (short)CompressionMethod.None)
                     return; // nothing more to do
 
-                if (_CompressionLevel == ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel.None)
-                    _CompressionMethod = (short) ModuleFramework.Libs.ZipLib.Zip.CompressionMethod.None;
+                if (_CompressionLevel == Dym.Libs.ZipLib.Zlib.CompressionLevel.None)
+                    _CompressionMethod = (short) Dym.Libs.ZipLib.Zip.CompressionMethod.None;
                 else
-                    _CompressionMethod = (short) ModuleFramework.Libs.ZipLib.Zip.CompressionMethod.Deflate;
+                    _CompressionMethod = (short) Dym.Libs.ZipLib.Zip.CompressionMethod.Deflate;
 
                 if (_container.ZipFile != null) _container.ZipFile.NotifyEntryChanged();
                 _restreamRequiredOnSave = true;
@@ -1485,7 +1485,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   overloads) in that case.
         /// </remarks>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.UncompressedSize"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipEntry.UncompressedSize"/>
         public Int64 CompressedSize
         {
             get { return _CompressedSize; }
@@ -1503,7 +1503,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   overloads) in that case.
         /// </remarks>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.CompressedSize"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipEntry.CompressedSize"/>
         public Int64 UncompressedSize
         {
             get { return _UncompressedSize; }
@@ -1748,8 +1748,8 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         /// Thrown in the setter if EncryptionAlgorithm.Unsupported is specified.
         /// </exception>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.Password">ZipEntry.Password</seealso>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.Encryption">ZipFile.Encryption</seealso>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipEntry.Password">ZipEntry.Password</seealso>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.Encryption">ZipFile.Encryption</seealso>
         public EncryptionAlgorithm Encryption
         {
             get
@@ -1910,8 +1910,8 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///
         /// </example>
         ///
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipEntry.Encryption"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.Password">ZipFile.Password</seealso>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipEntry.Encryption"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.Password">ZipFile.Password</seealso>
         public string Password
         {
             set
@@ -1978,7 +1978,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///   </para>
         ///
         /// </remarks>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.ExtractExistingFile"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.ExtractExistingFile"/>
         ///
         /// <example>
         ///   This example shows how to set the <c>ExtractExistingFile</c> property in
@@ -2057,8 +2057,8 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         ///  </para>
         ///
         /// </remarks>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.ZipErrorAction"/>
-        /// <seealso cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.ZipError"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.ZipErrorAction"/>
+        /// <seealso cref="Dym.Libs.ZipLib.Zip.ZipFile.ZipError"/>
         public ZipErrorAction ZipErrorAction
         {
             get;
@@ -2145,7 +2145,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                 }
                 else
                 {
-                    AlternateEncoding = ModuleFramework.Libs.ZipLib.Zip.ZipFile.DefaultEncoding;
+                    AlternateEncoding = Dym.Libs.ZipLib.Zip.ZipFile.DefaultEncoding;
                     AlternateEncodingUsage = ZipOption.Never;
                 }
             }
@@ -2337,7 +2337,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         private static ZipEntry Create(string nameInArchive, ZipEntrySource source, Object arg1, Object arg2)
         {
             if (String.IsNullOrEmpty(nameInArchive))
-                throw new ModuleFramework.Libs.ZipLib.Zip.ZipException("The entry name must be non-null and non-empty.");
+                throw new Dym.Libs.ZipLib.Zip.ZipException("The entry name must be non-null and non-empty.");
 
             ZipEntry entry = new ZipEntry();
 
@@ -2374,7 +2374,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                 String filename = (arg1 as String);   // must not be null
 
                 if (String.IsNullOrEmpty(filename))
-                    throw new ModuleFramework.Libs.ZipLib.Zip.ZipException("The filename must be non-null and non-empty.");
+                    throw new Dym.Libs.ZipLib.Zip.ZipException("The filename must be non-null and non-empty.");
 
                 try
                 {
@@ -2385,7 +2385,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
 
 #if NETCF
                     // workitem 6878
-                    // ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.AdjustTime_Win32ToDotNet
+                    // Dym.Libs.ZipLib.Zip.SharedUtilities.AdjustTime_Win32ToDotNet
                     entry._Mtime = File.GetLastWriteTime(filename).ToUniversalTime();
                     entry._Ctime = File.GetCreationTime(filename).ToUniversalTime();
                     entry._Atime = File.GetLastAccessTime(filename).ToUniversalTime();
@@ -2582,7 +2582,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
                 this.ArchiveStream.Seek(this._RelativeOffsetOfLocalHeader, SeekOrigin.Begin);
 
                 // workitem 10178
-                ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
+                Dym.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
             }
             catch (System.IO.IOException exc1)
             {
@@ -2607,7 +2607,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
 
             this.ArchiveStream.Seek(filenameLength + extraFieldLength, SeekOrigin.Current);
             // workitem 10178
-            ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
+            Dym.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
 
             this._LengthOfHeader = 30 + extraFieldLength + filenameLength +
                 GetLengthOfCryptoHeaderBytes(_Encryption_FromZipFile);
@@ -2622,7 +2622,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
             // workitem 8098: ok (restore)
             this.ArchiveStream.Seek(origPosition, SeekOrigin.Begin);
             // workitem 10178
-            ModuleFramework.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
+            Dym.Libs.ZipLib.Zip.SharedUtilities.Workaround_Ladybug318918(this.ArchiveStream);
         }
 
 
@@ -2700,7 +2700,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         internal Int16 _BitField;
         internal Int16 _CompressionMethod;
         private Int16 _CompressionMethod_FromZipFile;
-        private ModuleFramework.Libs.ZipLib.Zlib.CompressionLevel _CompressionLevel;
+        private Dym.Libs.ZipLib.Zlib.CompressionLevel _CompressionLevel;
         internal string _Comment;
         private bool _IsDirectory;
         private byte[] _CommentBytes;

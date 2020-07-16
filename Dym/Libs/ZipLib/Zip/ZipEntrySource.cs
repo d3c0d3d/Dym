@@ -20,7 +20,7 @@
 // ------------------------------------------------------------------
 //
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
     /// <summary>
     /// An enum that specifies the source of the ZipEntry. 
@@ -39,8 +39,8 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         FileSystem,
 
         /// <summary>
-        /// The entry was instantiated via <see cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddEntry(string,string)"/> or
-        /// <see cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddEntry(string,System.IO.Stream)"/> .
+        /// The entry was instantiated via <see cref="Dym.Libs.ZipLib.Zip.ZipFile.AddEntry(string,string)"/> or
+        /// <see cref="Dym.Libs.ZipLib.Zip.ZipFile.AddEntry(string,System.IO.Stream)"/> .
         /// </summary>
         Stream,
 
@@ -56,7 +56,7 @@ namespace ModuleFramework.Libs.ZipLib.Zip
         
         /// <summary>
         /// The content for the ZipEntry will be obtained from the stream dispensed by the <c>OpenDelegate</c>.
-        /// The entry was instantiated via <see cref="ModuleFramework.Libs.ZipLib.Zip.ZipFile.AddEntry(string,OpenDelegate,CloseDelegate)"/>.
+        /// The entry was instantiated via <see cref="Dym.Libs.ZipLib.Zip.ZipFile.AddEntry(string,OpenDelegate,CloseDelegate)"/>.
         /// </summary>
         JitStream,
         

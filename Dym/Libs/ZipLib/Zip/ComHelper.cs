@@ -26,7 +26,7 @@
 
 using Interop=System.Runtime.InteropServices;
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
     /// <summary>
     /// This class exposes a set of COM-accessible wrappers for static

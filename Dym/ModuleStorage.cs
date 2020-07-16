@@ -3,10 +3,10 @@ using System.IO;
 using System.Linq;
 using LiteDB;
 
-namespace ModuleFramework
+namespace Dym
 {
     public class ModuleStorage : IDisposable
-    {        
+    {
         private LiteDatabase _db;
 
         public ModuleStorage()
@@ -47,7 +47,7 @@ namespace ModuleFramework
             var file = _db.FileStorage.FindById(id);
             if (file.Filename.Contains("_"))
             {
-                var extractVersion = file.Filename.Split('_').LastOrDefault();                
+                var extractVersion = file.Filename.Split('_').LastOrDefault();
                 return new Version(extractVersion);
             }
             return null;

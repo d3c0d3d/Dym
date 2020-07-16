@@ -25,7 +25,7 @@
 // ------------------------------------------------------------------
 
 
-namespace ModuleFramework.Libs.ZipLib.Zip
+namespace Dym.Libs.ZipLib.Zip
 {
 
     // For some weird reason, the method with the DispId(-4) attribute, which is used as
