@@ -1,11 +1,11 @@
 ﻿using Dym.Logging;
-using Dym.OptionCommand;
 using Dym.Util;
 using Dym.Extensions;
 using System;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Collections.Generic;
 
 namespace Dym
 {
@@ -13,40 +13,30 @@ namespace Dym
     {
         public IModuleHost _host;
         public string _ownHash;
-        public Guid _uid;
-        /// <summary>
-        /// -result
-        /// </summary>
-        public const string RETFLAG = "-result";
-        private const string UNSUPPORTFLAG = "unsupported";
 
-        private OptionSet _optionSet;
+        private const string UNSUPPORTFLAG = "__unsupported";
+        private const string NOTFOUNDFLAG = "__notfound";
 
         public static readonly Logger _logger = LoggerFactory.CreateLogger(LogLevel.Info, Utilities.GetEnvLoggerFile(Constants.MFL.ToStr()));
 
-        public Guid _instanceUidFrom;
-        public string[] _instanceMessages;
+        public ModuleType ModuleType { get; set; } = ModuleType.Undefined;
+        public byte[] Uid { get; set; } = Guid.NewGuid().ToByteArray();
+        public string SessionKey { get; set; } = Nanoid.Generate(Constants.NID.ToStr(), 7);
+        public string FriendlyName { get; set; } = Assembly.GetCallingAssembly().GetName().Name;
+        public Version Version { get; set; } = new Version(0, 0, 1);
+        public Guid _uid => new Guid(Uid);
 
-        public ModuleType ModuleType { get; set; }
-
-        public byte[] Uid { get; set; }
-
-        public string SessionKey { get; set; }
-        public string FriendlyName { get; set; }
-
-        public Version Version { get; set; }
+        private MethodInvoker<MethodInvokerAttribute>[] _instanceMethodsInvokers;
 
         public ModuleEx()
         {
-            SessionKey = Nanoid.Generate(Constants.NID.ToStr(), 7);
-
-            _optionSet = new OptionSet().Add(UNSUPPORTFLAG, _ => UnSupported());
-        }
-
-        public ModuleEx MethodRegistry(string name, Action<string> action)
-        {
-            _optionSet.Add(name, action);
-            return this;
+            _instanceMethodsInvokers = GetType().GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+             .Where(x => x.GetCustomAttribute(typeof(MethodInvokerAttribute)) != null)
+               .Select(x =>
+                   new MethodInvoker<MethodInvokerAttribute>(
+                       (MethodInvokerAttribute)x.GetCustomAttribute(typeof(MethodInvokerAttribute)),
+                       x)
+               ).ToArray();
         }
 
         public virtual void Startup(IModuleHost moduleHost, string ownHash)
@@ -55,57 +45,46 @@ namespace Dym
             _ownHash = ownHash;
         }
 
-        public virtual void Load(params string[] parms)
+        public virtual void Load(object parms)
         {
-            string inline = parms?.Aggregate<string, string>(null, (m1, m2) => (m1.IsNull() ? m1 : m1 + "|") + m2);
-            PrintLog($"{(!inline.IsNull() ? $"{inline}|" : "")}{nameof(Load)}");
+            FormattedPrintLog(nameof(Load), parms);
         }
 
-        public virtual void Dispose(params string[] parms)
+        public virtual void Dispose(object parms)
         {
-            string inline = parms?.Aggregate<string, string>(null, (m1, m2) => (m1.IsNull() ? m1 : m1 + "|") + m2);
-            PrintLog($"{(!inline.IsNull() ? $"{inline}|" : "")}{nameof(Dispose)}");
-
+            FormattedPrintLog(nameof(Dispose), parms);
         }
 
-        public virtual void MessageCallback(Guid uidFrom, string name, params string[] messages)
+        public virtual void IncomingMessageCallback(Guid uidFrom, string name, object messages)
         {
-            string inline = messages?.Aggregate<string, string>(null, (m1, m2) => (m1.IsNull() ? m1 : m1 + "|") + m2);
-            PrintLog($"{(!inline.IsNull() ? $"{inline}|" : "")}{nameof(MessageCallback)}");
+            FormattedPrintLog(nameof(IncomingMessageCallback), messages);
 
-            ProcessMessages(uidFrom, name, messages);
+            IncomingMessageResolver(uidFrom, name, messages);
         }
 
-        private void ProcessMessages(Guid uidFrom, string name, string[] messages)
+        private void IncomingMessageResolver(Guid uidFrom, string name, object messages)
         {
-            _instanceUidFrom = uidFrom;
-            _instanceMessages = messages;
 
-            // todo: future update
-            if (name.EndsWith(RETFLAG))
-            {
-                if (ExecResultMethod(name))
-                    return;
-            }
+            var instMethodByName = _instanceMethodsInvokers.Where(m => m.Attribute.MethodName == name);
 
-            var ret = _optionSet.Parse(new[] { name });
-            if (ret.Count > 0)
-            {
-                string addmessage = string.Empty;
-
-                if (_instanceUidFrom == Guid.Empty) // message from modulehost
+            // invoke method
+            if (instMethodByName.Any()) // todo: NotFoundModule
+                switch(name)
                 {
-                    addmessage = _instanceUidFrom.ToString();
-                    _instanceUidFrom = _uid;
-                }
-
-                // send message
-                _host.SendMessagesToModule(_uid, _instanceUidFrom, UNSUPPORTFLAG, name, addmessage);
-
+                    case UNSUPPORTFLAG:
+                        _instanceMethodsInvokers.FirstOrDefault(m => m.Attribute.MethodName == name)
+                            .TargetMethod.Invoke(this, new object[] { uidFrom, messages });
+                        break;
+                    default:
+                        _instanceMethodsInvokers.FirstOrDefault(m => m.Attribute.MethodName == name)
+                            .TargetMethod.Invoke(this, new object[] { messages });
+                        break;
+                }                
+            else
+            {
+                _host.SendMessagesToModule(_uid, uidFrom, UNSUPPORTFLAG, messages);
             }
-
         }
-
         private bool ExecResultMethod(string name)
         {
             bool execMethod = false;
@@ -122,20 +101,22 @@ namespace Dym
             return execMethod;
         }
 
-        public virtual string UnSupported()
+        [MethodInvoker(UNSUPPORTFLAG, typeof(string))]
+        public virtual string UnSupported(Guid uidFrom, object message)
         {
-            var module = _host.GetModuleLoadedInfos(_instanceUidFrom);
+            var module = _host.GetModuleLoadedInfos(uidFrom);
             var messageBuilder = new StringBuilder();
-            messageBuilder.AppendLine($"Name: {module.Item3}");
-            messageBuilder.AppendLine($"Module: {module.Item1}");
-            messageBuilder.AppendLine($"Session: {SessionKey}");
-            messageBuilder.AppendLine($"Message: {_instanceMessages.Aggregate<string, string>(null, (m1, m2) => (m1.IsNull() ? m1 : m1 + ", ") + m2)}");
+            messageBuilder.AppendLine($"Name: {module.Value.FriendlyName}");            
+            messageBuilder.AppendLine($"Module: {module.Value.Uid}");
+            messageBuilder.AppendLine($"Session: {module.Value.SessionKey}");
+            messageBuilder.AppendLine($"Message: {(message as List<TransportMessageBase>).Aggregate<TransportMessageBase, string>(null, (m1, m2) => (m1.IsNull() ? m1 : m1 + ", ") + m2)}");
 
             PrintLog($"{messageBuilder}", LogLevel.Warn);
 
             return messageBuilder.ToString();
         }
 
+        [MethodInvoker(NOTFOUNDFLAG, typeof(ModuleType))]
         public virtual string NotFoundModule(ModuleType moduleType)
         {
             var messageBuilder = new StringBuilder();
@@ -146,6 +127,16 @@ namespace Dym
             PrintLog($"{messageBuilder}", LogLevel.Warn);
 
             return messageBuilder.ToString();
+        }
+
+        private void FormattedPrintLog(string methodName, object message)
+        {
+            string inline = string.Empty;
+
+            if (message is List<TransportMessageBase>)
+                inline = (message as List<TransportMessageBase>)?.Aggregate<TransportMessageBase, string>(null, (m1, m2) => (m1.IsNull() ? m1 : m1 + "|") + m2);
+
+            PrintLog($"{methodName}{(!inline.IsNull() ? $" => {inline}|" : "")}");
         }
 
         public void PrintLog(string text, LogLevel logLevel = LogLevel.Info)

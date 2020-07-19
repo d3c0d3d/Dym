@@ -29,7 +29,7 @@ namespace Dym
         /// </summary>
         /// <param name="uid">unique id</param>
         /// <param name="parms">custom params</param>
-        void LoadModule(Guid uid, params string[] parms);
+        void LoadModule(Guid uid, object parms = null);
         /// <summary>
         /// Unload module with (optinal) <see cref="DisposeModule(Guid)"/>
         /// </summary>
@@ -41,15 +41,15 @@ namespace Dym
         /// </summary>
         /// <param name="uid">unique id</param>
         /// <param name="parms">custom params</param>
-        void DisposeModule(Guid uid, params string[] parms);
+        void DisposeModule(Guid uid, object parms);
         /// <summary>
         /// Send messages to modules through host
         /// </summary>
         /// <param name="uidFrom">unique id of origem</param>
         /// <param name="uidTo">unique id of destination</param>
         /// <param name="name">name of message</param>
-        /// <param name="messages">an or many messages</param>
-        void SendMessagesToModule(Guid uidFrom, Guid uidTo, string name, params string[] messages);
+        /// <param name="message">an or many messages</param>
+        void SendMessagesToModule(Guid uidFrom, Guid uidTo, string name, object message);
         /// <summary>
         /// Returns if module exists on host
         /// </summary>
@@ -68,7 +68,7 @@ namespace Dym
         /// </summary>
         /// <param name="uid">unique id</param>
         /// <returns></returns>
-        Tuple<Guid, string, string, Version, bool, ModuleType, string> GetModuleLoadedInfos(Guid uid);
+        (Guid Uid, string SessionKey, string FriendlyName, Version Version, bool IsStarted, ModuleType ModuleType, string AssemblyHash)? GetModuleLoadedInfos(Guid uid);
         /// <summary>
         /// Returns loaded module information by friendlyName
         /// (<see cref="ModuleLoader.Uid"/>, 
@@ -81,7 +81,7 @@ namespace Dym
         /// </summary>
         /// <param name="searchFriendlyName">unique id</param>
         /// <returns></returns>
-        Tuple<Guid, string, string, Version, bool, ModuleType, string> GetModuleLoadedInfos(string searchFriendlyName);
+        (Guid Uid, string SessionKey, string FriendlyName, Version Version, bool IsStarted, ModuleType ModuleType, string AssemblyHash)? GetModuleLoadedInfos(string searchFriendlyName);
         /// <summary>
         /// Returns loaded module information by <see cref="ModuleType"/>
         /// (<see cref="ModuleLoader.Uid"/>, 
@@ -94,6 +94,6 @@ namespace Dym
         /// </summary>
         /// <param name="moduleType"></param>
         /// <returns></returns>
-        Tuple<Guid, string, string, Version, bool, ModuleType, string> GetModuleLoadedInfos(ModuleType moduleType);
+        (Guid Uid, string SessionKey, string FriendlyName, Version Version, bool IsStarted, ModuleType ModuleType, string AssemblyHash)? GetModuleLoadedInfos(ModuleType moduleType);
     }
 }

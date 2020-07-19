@@ -19,6 +19,7 @@ namespace Dym
                 var modulebaseUid = new Guid(Constants.ModuleUid).ToString();
 
                 var domain = AppDomain.CreateDomain(uid.ToString());
+
                 Type loaderType = null;
                 ModuleLoader loader = null;
 
@@ -143,7 +144,7 @@ namespace Dym
             }
         }
 
-        public void LoadModule(Guid uid, params string[] parms)
+        public void LoadModule(Guid uid, object parms)
         {
             if (_modules.ContainsKey(uid))
             {
@@ -164,7 +165,7 @@ namespace Dym
                     var p = _modules[uid].Loader;
                     if (p.IsStarted)
                     {
-                        p.Dispose();
+                        p.Dispose(null);
                     }
                 }
 
@@ -174,7 +175,7 @@ namespace Dym
             }
         }
 
-        public void DisposeModule(Guid uid, params string[] parms)
+        public void DisposeModule(Guid uid, object parms)
         {
             if (_modules.ContainsKey(uid))
             {
@@ -186,14 +187,14 @@ namespace Dym
             }
         }
 
-        public void SendMessagesToModule(Guid uidFrom, Guid uidTo, string name, params string[] messages)
+        public void SendMessagesToModule(Guid uidFrom, Guid uidTo, string name, object messages)
         {
             if (_modules.ContainsKey(uidTo))
             {
                 var p = _modules[uidTo].Loader;
                 if (p.IsStarted)
                 {
-                    p.SendMessages(uidFrom, $"-{name}", messages);
+                    p.SendMessages(uidFrom, name, messages);
                 }
             }
         }
@@ -203,19 +204,19 @@ namespace Dym
             return _modules.ContainsKey(uid);
         }
 
-        public Tuple<Guid, string, string, Version, bool, ModuleType, string> GetModuleLoadedInfos(Guid uid)
+        public (Guid Uid, string SessionKey, string FriendlyName, Version Version, bool IsStarted, ModuleType ModuleType, string AssemblyHash)? GetModuleLoadedInfos(Guid uid)
         {
             if (_modules.ContainsKey(uid))
             {
                 var loader = _modules[uid].Loader;
 
-                return new Tuple<Guid, string, string, Version, bool, ModuleType, string>(loader.Uid, loader.SessionKey, loader.FriendlyName, loader.Version, loader.IsStarted, loader.ModuleType, loader.AssemblyHash);
+                return (loader.Uid, loader.SessionKey, loader.FriendlyName, loader.Version, loader.IsStarted, loader.ModuleType, loader.AssemblyHash);
             }
 
             return null;
         }
 
-        public Tuple<Guid, string, string, Version, bool, ModuleType, string> GetModuleLoadedInfos(string searchFriendlyName)
+        public (Guid Uid, string SessionKey, string FriendlyName, Version Version, bool IsStarted, ModuleType ModuleType, string AssemblyHash)? GetModuleLoadedInfos(string searchFriendlyName)
         {
             var module = _modules.FirstOrDefault(x => x.Value.Loader.FriendlyName.ToLower().Contains(searchFriendlyName.ToLower()));
 
@@ -223,13 +224,13 @@ namespace Dym
             {
                 var loader = module.Value.Loader;
 
-                return new Tuple<Guid, string, string, Version, bool, ModuleType, string>(loader.Uid, loader.SessionKey, loader.FriendlyName, loader.Version, loader.IsStarted, loader.ModuleType, loader.AssemblyHash);
+                return (loader.Uid, loader.SessionKey, loader.FriendlyName, loader.Version, loader.IsStarted, loader.ModuleType, loader.AssemblyHash);
             }
 
             return null;
         }
 
-        public Tuple<Guid, string, string, Version, bool, ModuleType, string> GetModuleLoadedInfos(ModuleType moduleType)
+        public (Guid Uid, string SessionKey, string FriendlyName, Version Version, bool IsStarted, ModuleType ModuleType, string AssemblyHash)? GetModuleLoadedInfos(ModuleType moduleType)
         {
             var module = _modules.FirstOrDefault(x => x.Value.Loader.ModuleType == moduleType);
 
@@ -237,7 +238,7 @@ namespace Dym
             {
                 var loader = module.Value.Loader;
 
-                return new Tuple<Guid, string, string, Version, bool, ModuleType, string>(loader.Uid, loader.SessionKey, loader.FriendlyName, loader.Version, loader.IsStarted, loader.ModuleType, loader.AssemblyHash);
+                return (loader.Uid, loader.SessionKey, loader.FriendlyName, loader.Version, loader.IsStarted, loader.ModuleType, loader.AssemblyHash);
             }
 
             return null;

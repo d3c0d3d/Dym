@@ -34,18 +34,18 @@ namespace Dym
         /// Start module with params (param1:value1, param2:value2...)
         /// </summary>
         /// <param name="parms">param1:value1, param2:value2</param>
-        void Load(params string[] parms);
+        void Load(object parms);
         /// <summary>
         /// Perform disposable operations inside module before unloading (param1:value1, param2:value2...)
         /// </summary>
         /// <param name="parms">param1:value1, param2:value2</param>
-        void Dispose(params string[] parms);
+        void Dispose(object parms);
         /// <summary>
         /// Recover Messages of other modules
         /// </summary>
         /// <param name="uidFrom"></param>
         /// <param name="name"></param>
-        /// <param name="messages"></param>
-        void MessageCallback(Guid uidFrom, string name, params string[] messages);
+        /// <param name="message"></param>
+        void IncomingMessageCallback(Guid uidFrom, string name, object message);
     }
 }

@@ -64,7 +64,7 @@ namespace Dym
             }
         }
 
-        public void Load(params string[] parms)
+        public void Load(object parms)
         {
             IsStarted = true;
             if (_moduleInstance == null)
@@ -74,7 +74,7 @@ namespace Dym
             _moduleInstance.Load(parms);
         }
 
-        public void Dispose(params string[] parms)
+        public void Dispose(object parms)
         {
             if (_moduleInstance == null)
             {
@@ -84,13 +84,13 @@ namespace Dym
             IsStarted = false;
         }
 
-        public void SendMessages(Guid uidFrom, string name, params string[] messages)
+        public void SendMessages(Guid uidFrom, string name, object messages)
         {
             if (_moduleInstance == null)
             {
                 return;
             }
-            _moduleInstance.MessageCallback(uidFrom, name, messages);
+            _moduleInstance.IncomingMessageCallback(uidFrom, name, messages);
         }
     }
 }
