@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleTester1", "Tests\Modu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleTester2", "Tests\ModuleTester2\ModuleTester2.csproj", "{AF0539F3-AB29-4B5F-ACC8-5907F04A324A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppLoaderNET46", "Tests\AppLoaderNET47\AppLoaderNET46.csproj", "{FD22263C-1CD0-4F0B-BD69-5CC9D0CBC3F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppLoaderNET46", "Tests\AppLoaderNET46\AppLoaderNET46.csproj", "{FD22263C-1CD0-4F0B-BD69-5CC9D0CBC3F4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppShared", "Tests\AppShared\AppShared.csproj", "{55665F60-27CF-4F15-8DD9-82A8CB8AF021}"
 EndProject
