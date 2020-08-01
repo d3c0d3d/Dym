@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AppLoaderNET47
+namespace AppLoaderNET46
 {
     class Program
     {
@@ -9,7 +9,7 @@ namespace AppLoaderNET47
         static void Main(string[] args)
         {
             try
-            {
+            {                
                 AppShared.Test.SighTesterModules();
                 AppShared.Test.LoadTesterModules();
             }

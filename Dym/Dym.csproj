@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net472</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net46</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
     <OutputPath>..\build\Debug</OutputPath>
   </PropertyGroup>
   
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net472|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net46|AnyCPU'">
     <OutputPath>..\build\Debug</OutputPath>
   </PropertyGroup>
   
@@ -16,14 +16,20 @@
     <OutputPath>..\build\Release</OutputPath>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net472|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net46|AnyCPU'">
     <OutputPath>..\build\Release</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Costura.Fody" Version="4.1.0" />
     <PackageReference Include="LiteDB" Version="5.0.8" />
-    <PackageReference Include="System.Security.Permissions" Version="4.7.0" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />    
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Security.Permissions">
+      <Version>4.7.0</Version>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

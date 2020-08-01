@@ -7,15 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dym", "Dym\Dym.csproj", "{0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0B570146-7768-450D-A42B-066EDD3D0453}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppLoaderNC", "Tests\AppLoaderNC\AppLoaderNC.csproj", "{18F95AB1-9AEC-4E22-9124-EB5A045B87A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppLoaderNC", "Tests\AppLoaderNC\AppLoaderNC.csproj", "{18F95AB1-9AEC-4E22-9124-EB5A045B87A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleTester1", "Tests\ModuleTester1\ModuleTester1.csproj", "{8CFE8D60-7AFC-4FF1-B0CD-162B44AFA036}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleTester1", "Tests\ModuleTester1\ModuleTester1.csproj", "{8CFE8D60-7AFC-4FF1-B0CD-162B44AFA036}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleTester2", "Tests\ModuleTester2\ModuleTester2.csproj", "{AF0539F3-AB29-4B5F-ACC8-5907F04A324A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleTester2", "Tests\ModuleTester2\ModuleTester2.csproj", "{AF0539F3-AB29-4B5F-ACC8-5907F04A324A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppLoaderNET47", "Tests\AppLoaderNET47\AppLoaderNET47.csproj", "{FD22263C-1CD0-4F0B-BD69-5CC9D0CBC3F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppLoaderNET46", "Tests\AppLoaderNET47\AppLoaderNET46.csproj", "{FD22263C-1CD0-4F0B-BD69-5CC9D0CBC3F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppShared", "Tests\AppShared\AppShared.csproj", "{55665F60-27CF-4F15-8DD9-82A8CB8AF021}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppShared", "Tests\AppShared\AppShared.csproj", "{55665F60-27CF-4F15-8DD9-82A8CB8AF021}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E04D5A44-DB83-4139-BA3E-47F832500FCD}"
 	ProjectSection(SolutionItems) = preProject

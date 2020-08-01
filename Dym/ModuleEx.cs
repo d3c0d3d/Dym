@@ -23,7 +23,7 @@ namespace Dym
         public byte[] Uid { get; set; } = Guid.NewGuid().ToByteArray();
         public string SessionKey { get; set; } = Nanoid.Generate(Constants.NID.ToStr(), 7);
         public string FriendlyName { get; set; } = Assembly.GetCallingAssembly().GetName().Name;
-        public Version Version { get; set; } = new Version(0, 0, 1);
+        public Version Version { get; set; } = Assembly.GetCallingAssembly().GetName().Version;
         public Guid _uid => new Guid(Uid);
 
         private MethodInvoker<MethodInvokerAttribute>[] _instanceMethodsInvokers;

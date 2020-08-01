@@ -1,0 +1,10 @@
+<Project>
+    <PropertyGroup>
+        <AssemblyName>ModuleTester1</AssemblyName>
+        <Company>d3c0d3d Labs</Company>        
+        <Copyright>Copyright © 2020</Copyright>
+        <AssemblyVersion>1.0.1.2</AssemblyVersion>
+        <FileVersion>1.0.0.2</FileVersion>
+        <Version>1.0.0.2</Version>        
+    </PropertyGroup>
+</Project>
