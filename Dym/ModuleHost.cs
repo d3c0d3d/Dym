@@ -34,9 +34,10 @@ namespace Dym
                     var loaderVersion = loaderType.GetProperty(nameof(ModuleLoader.Version)).GetValue(loader) as Version;
                     var loaderUid = loaderType.GetProperty(nameof(ModuleLoader.Uid)).GetValue(loader).ToString();
                     var loaderName = loaderType.GetProperty(nameof(ModuleLoader.FriendlyName)).GetValue(loader).ToString();
+                    var loaderHash = loaderType.GetProperty(nameof(ModuleLoader.AssemblyHash)).GetValue(loader).ToString();
 
                     // save in db                    
-                    storage.SaveOrUpdateFile(loaderUid, loaderName, loaderVersion, new MemoryStream(mfResource));
+                    storage.SaveOrUpdateFile(loaderUid, loaderName, loaderHash, loaderVersion, new MemoryStream(mfResource));
 
                 }
                 else
@@ -58,7 +59,7 @@ namespace Dym
                 // storage module
                 storage.SaveOrUpdateFile(
                     loader.Uid.ToString(),
-                    loader.FriendlyName, loader.Version,
+                    loader.FriendlyName, loader.AssemblyHash, loader.Version,
                     new MemoryStream(mbytes));
             }
         }
@@ -85,11 +86,12 @@ namespace Dym
                     var loaderVersion = loaderType.GetProperty(nameof(ModuleLoader.Version)).GetValue(loader) as Version;
                     var loaderUid = loaderType.GetProperty(nameof(ModuleLoader.Uid)).GetValue(loader).ToString();
                     var loaderName = loaderType.GetProperty(nameof(ModuleLoader.FriendlyName)).GetValue(loader).ToString();
+                    
+                    loader.Startup(this, path);
 
                     // save in db                    
-                    storage.SaveOrUpdateFile(loaderUid, loaderName, loaderVersion, new MemoryStream(fileFramework));
+                    storage.SaveOrUpdateFile(loaderUid, loaderName, loader.AssemblyHash, loaderVersion, new MemoryStream(fileFramework));
 
-                    loader.Startup(this, path);
 
                     _modules.Add(loader.Uid, new ModuleInfo
                     {
@@ -100,7 +102,7 @@ namespace Dym
                     // storage module
                     storage.SaveOrUpdateFile(
                         loader.Uid.ToString(),
-                        loader.FriendlyName, loader.Version,
+                        loader.FriendlyName, loader.AssemblyHash, loader.Version,
                         new MemoryStream(File.ReadAllBytes(path)));
                 }
             }

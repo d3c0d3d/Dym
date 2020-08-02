@@ -8,8 +8,11 @@ namespace AppLoaderNET46
         {
             try
             {                
-                AppShared.Test.SighTesterModules();
-                AppShared.Test.LoadTesterModules();
+                //AppShared.Test.SighTesterModules();
+                //AppShared.Test.LoadTesterModules();
+                AppShared.Test.FilesTesterInStorage();
+
+                AppShared.Test.LoadFromStorageTester();
             }
             catch (Exception ex)
             {

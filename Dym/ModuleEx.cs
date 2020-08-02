@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Dym
 {
@@ -20,13 +21,13 @@ namespace Dym
         public static readonly Logger _logger = LoggerFactory.CreateLogger(LogLevel.Info, Utilities.GetEnvLoggerFile(Constants.MFL.ToStr()));
 
         public ModuleType ModuleType { get; set; } = ModuleType.Undefined;
-        public byte[] Uid { get; set; } = Guid.NewGuid().ToByteArray();
+        public byte[] Uid { get; private set; }
         public string SessionKey { get; set; } = Nanoid.Generate(Constants.NID.ToStr(), 7);
         public string FriendlyName { get; set; } = Assembly.GetCallingAssembly().GetName().Name;
         public Version Version { get; set; } = Assembly.GetCallingAssembly().GetName().Version;
         public Guid _uid => new Guid(Uid);
 
-        private MethodInvoker<MethodInvokerAttribute>[] _instanceMethodsInvokers;
+        private MethodInvoker<MethodInvokerAttribute>[] _instanceMethodsInvokers;        
 
         public ModuleEx()
         {
@@ -37,6 +38,14 @@ namespace Dym
                        (MethodInvokerAttribute)x.GetCustomAttribute(typeof(MethodInvokerAttribute)),
                        x)
                ).ToArray();
+
+            var attribute = Assembly.GetCallingAssembly().GetCustomAttribute(typeof(AssemblyProductAttribute)) as AssemblyProductAttribute;
+            Debug.WriteLine("Product: " + attribute.Product);
+
+            Guid.TryParse(attribute.Product, out Guid guid);
+            if (guid == Guid.Empty)
+                Uid = Guid.NewGuid().ToByteArray();
+            else Uid = guid.ToByteArray();
         }
 
         public virtual void Startup(IModuleHost moduleHost, string ownHash)

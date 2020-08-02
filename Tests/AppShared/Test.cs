@@ -68,5 +68,33 @@ namespace AppShared
                 Console.WriteLine($"{new string('-', 80)}");
             }
         }
+
+        public static void FilesTesterInStorage()
+        {
+            using (var storage = new ModuleStorage())
+            {
+                foreach (var item in storage.FindAll())
+                {
+                    Console.WriteLine($"{item.Key} | {item.Value}");
+                }                
+            }
+        }
+
+        // 5cbb5db9-4014-4372-a142-e3cfa8d812c6
+
+        public static void LoadFromStorageTester()
+        {
+            var paramsList = new List<TransportMessageBase>()
+            {
+                new TransportMessageBase(TransportType.Send,"type1Name","type1ValueStorage"),
+                new TransportMessageBase(TransportType.Receipt,"type2Name","type2ValueStorage"),
+                new TransportMessageBase(TransportType.Param,"type3Name","type3ValueStorage"),
+            };
+
+            Host = new ModuleHost();
+            Host.LoadAssembliesFromStorage(new Guid("5cbb5db9-4014-4372-a142-e3cfa8d812c6"));
+            Host.LoadModule(new Guid("5cbb5db9-4014-4372-a142-e3cfa8d812c6"), paramsList);
+            Host.SendMessagesToModule(Guid.Empty, new Guid("5cbb5db9-4014-4372-a142-e3cfa8d812c6"), "print-message", paramsList);
+        }
     }
 }

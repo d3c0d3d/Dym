@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using LiteDB;
 
 namespace Dym
@@ -18,9 +18,22 @@ namespace Dym
         {
             _db.FileStorage.Upload(id, filename, stream);
         }
-        public void SaveOrUpdateFile(string id, string filename, Version version, Stream stream)
-        {
-            _db.FileStorage.Upload(id, $"{filename}_{version}", stream);
+        public void SaveOrUpdateFile(string id, string filename, string asmHash, Version version, Stream stream)
+        {            
+            var bsonIdValue = new BsonValue(id);
+            var bsonFileNameValue = new BsonValue(filename);
+            var bsonAsmHashValue = new BsonValue(asmHash);
+            var bsonVersionValue = new BsonValue(version.ToString());
+
+            var bson = new BsonDocument() 
+            {
+                new KeyValuePair<string, BsonValue>(nameof(id), bsonIdValue),
+                new KeyValuePair<string, BsonValue>(nameof(filename), bsonFileNameValue),
+                new KeyValuePair<string, BsonValue>(nameof(asmHash), bsonAsmHashValue),
+                new KeyValuePair<string, BsonValue>(nameof(version), bsonVersionValue) 
+            };
+
+            _db.FileStorage.Upload(id, filename, stream, bson);
         }
 
         public byte[] GetFile(string id)
@@ -40,18 +53,24 @@ namespace Dym
             return _db.FileStorage.FindById(id) != null;
         }
 
-        public Version GetVersionInFile(string id)
+        public Dictionary<string, string> FindAll()
         {
-            if (!FileExists(id))
-                return null;
-            var file = _db.FileStorage.FindById(id);
-            if (file.Filename.Contains("_"))
-            {
-                var extractVersion = file.Filename.Split('_').LastOrDefault();
-                return new Version(extractVersion);
-            }
-            return null;
+            var result = _db.FileStorage.FindAll();
 
+            Dictionary<string, string> items = new Dictionary<string, string>();
+
+            foreach (var ret in result)
+            {
+                string metaInfo = null;
+
+                foreach (var metadata in ret.Metadata)
+                {
+                    metaInfo += $" {metadata.Key}={metadata.Value}";
+                }
+
+                items.Add(ret.Id,metaInfo);
+            }
+            return items;
         }
 
         public void Dispose()

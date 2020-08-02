@@ -1,9 +1,10 @@
 <Project>
   <PropertyGroup>    
     <!--Uid-->
-    <Product>5cbb5db9-4014-4372-a142-e3cfa8d812c6</Product>
+    <Product>c676a0ad-4acb-4522-86f8-fcd10b2da819</Product>
     <!--Uid-->
     <AssemblyVersion>2020.08.02.0</AssemblyVersion>
-    <Version>0.0.0.2</Version>    
+    <Version>0.0.0.2</Version>
+
   </PropertyGroup>
 </Project>

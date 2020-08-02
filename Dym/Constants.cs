@@ -12,7 +12,7 @@ namespace Dym
         /// </summary>
         internal static byte[] ModuleUid = new byte[] { 0x85, 0xd1, 0x26, 0xf3, 0xe7, 0xde, 0x39, 0x45, 0x86, 0xc0, 0x94, 0x8d, 0x7b, 0xa7, 0xb2, 0x23 };
         internal static string ModuleFriendlyName = $"{nameof(ModuleLoader)}";
-        internal static Version ModuleVersion = new Version(2019, 11, 15, 0);
+        internal static Version ModuleVersion = new Version(2020, 08, 02, 0);
         internal static string ModuleStorageConnStr = CONNPART.ToStr() + Path.Combine(Utilities.AssemblyDirectory, "_ms");
 
         // password=dbl33tdb;filename=
