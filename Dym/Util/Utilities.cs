@@ -15,7 +15,7 @@ namespace Dym.Util
 {
     public static class Utilities
     {
-        private static readonly string[] manifestResources = Assembly.GetExecutingAssembly().GetManifestResourceNames();
+        private static readonly string[] manifestResources = Assembly.GetCallingAssembly().GetManifestResourceNames();
 
         public static byte[] GetEmbeddedResourceBytes(string resourceName)
         {
@@ -24,8 +24,8 @@ namespace Dym.Util
             if (resourceFullName != null)
             {
                 return Path.GetExtension(manifestResources.FirstOrDefault(N => N.Contains(resourceName))) == ".comp"
-                    ? Decompress(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceFullName).ReadFully())
-                    : Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceFullName).ReadFully();
+                    ? Decompress(Assembly.GetCallingAssembly().GetManifestResourceStream(resourceFullName).ReadFully())
+                    : Assembly.GetCallingAssembly().GetManifestResourceStream(resourceFullName).ReadFully();
             }
 
             return null;
