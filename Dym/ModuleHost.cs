@@ -12,13 +12,13 @@ namespace Dym
         private readonly Dictionary<Guid, ModuleInfo> _modules = new Dictionary<Guid, ModuleInfo>();
         public Guid[] ModulesUid => _modules.Keys.ToArray();
 
-        public void LoadAssembly(Guid uid, byte[] mbytes)
+        public void LoadAssembly(string friendlyName, byte[] mbytes)
         {
             using (var storage = new ModuleStorage())
             {
                 var modulebaseUid = new Guid(Constants.ModuleUid).ToString();
 
-                var domain = AppDomain.CreateDomain(uid.ToString());
+                var domain = AppDomain.CreateDomain(friendlyName);
 
                 Type loaderType = null;
                 ModuleLoader loader = null;

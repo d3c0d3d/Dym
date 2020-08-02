@@ -11,9 +11,9 @@ namespace Dym
         /// <summary>
         /// Load Assembly by bytes
         /// </summary>
-        /// <param name="uid"></param>
+        /// <param name="friendlyName"></param>
         /// <param name="mbytes"></param>        
-        void LoadAssembly(Guid uid, byte[] mbytes);
+        void LoadAssembly(string friendlyName, byte[] mbytes);
         /// <summary>
         /// Load Assembly´s by full path´s
         /// </summary>
