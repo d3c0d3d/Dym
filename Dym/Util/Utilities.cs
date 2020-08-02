@@ -17,7 +17,7 @@ namespace Dym.Util
     {
         private static readonly string[] manifestResources = Assembly.GetExecutingAssembly().GetManifestResourceNames();
 
-        internal static byte[] GetEmbeddedResourceBytes(string resourceName)
+        public static byte[] GetEmbeddedResourceBytes(string resourceName)
         {
             var resourceFullName = manifestResources.FirstOrDefault(N => N.Contains(resourceName));
 
@@ -45,7 +45,7 @@ namespace Dym.Util
             }
         }
 
-        internal static byte[] Compress(byte[] Bytes)
+        public static byte[] Compress(byte[] Bytes)
         {
             byte[] compressedBytes;
             using (MemoryStream memoryStream = new MemoryStream())
@@ -59,7 +59,7 @@ namespace Dym.Util
             return compressedBytes;
         }
 
-        internal static byte[] Decompress(byte[] compressed)
+        public static byte[] Decompress(byte[] compressed)
         {
             using (MemoryStream inputStream = new MemoryStream(compressed.Length))
             {
