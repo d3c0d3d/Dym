@@ -6,7 +6,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace Dym
 {
@@ -39,10 +38,10 @@ namespace Dym
                        x)
                ).ToArray();
 
-            var attribute = Assembly.GetCallingAssembly().GetCustomAttribute(typeof(AssemblyProductAttribute)) as AssemblyProductAttribute;
-            Debug.WriteLine("Product: " + attribute.Product);
+            var attr = Assembly.GetCallingAssembly()?.GetCustomAttribute(typeof(AssemblyProductAttribute)) as AssemblyProductAttribute;
+            PrintLog($"ProductUid: {attr?.Product}");
 
-            Guid.TryParse(attribute.Product, out Guid guid);
+            Guid.TryParse(attr.Product, out Guid guid);
             if (guid == Guid.Empty)
                 Uid = Guid.NewGuid().ToByteArray();
             else Uid = guid.ToByteArray();
