@@ -21,6 +21,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Dym.comp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Dym.comp" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Costura.Fody" Version="4.1.0" />
     <PackageReference Include="LiteDB" Version="5.0.8" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />    
