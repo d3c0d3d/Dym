@@ -34,7 +34,9 @@ namespace Dym
                     var loaderVersion = loaderType.GetProperty(nameof(ModuleLoader.Version)).GetValue(loader) as Version;
                     var loaderUid = loaderType.GetProperty(nameof(ModuleLoader.Uid)).GetValue(loader).ToString();
                     var loaderName = loaderType.GetProperty(nameof(ModuleLoader.FriendlyName)).GetValue(loader).ToString();
-                    var loaderHash = loaderType.GetProperty(nameof(ModuleLoader.AssemblyHash)).GetValue(loader).ToString();
+                    //var loaderHash = loaderType.GetProperty(nameof(ModuleLoader.AssemblyHash)).GetValue(loader).ToString();
+                    var loaderHash = Utilities.GetSHA256ChecksumFromString(mfResource.ToHex(false));
+
 
                     // save in db                    
                     storage.SaveOrUpdateFile(loaderUid, loaderName, loaderHash, loaderVersion, new MemoryStream(mfResource));
