@@ -26,7 +26,7 @@ namespace Dym
         public Version Version { get; set; } = Assembly.GetCallingAssembly().GetName().Version;
         public Guid _uid => new Guid(Uid);
 
-        private MethodInvoker<MethodInvokerAttribute>[] _instanceMethodsInvokers;        
+        private MethodInvoker<MethodInvokerAttribute>[] _instanceMethodsInvokers;
 
         public ModuleEx()
         {
@@ -77,7 +77,7 @@ namespace Dym
 
             // invoke method
             if (instMethodByName.Any()) // todo: NotFoundModule
-                switch(name)
+                switch (name)
                 {
                     case UNSUPPORTFLAG:
                         _instanceMethodsInvokers.FirstOrDefault(m => m.Attribute.MethodName == name)
@@ -87,7 +87,7 @@ namespace Dym
                         _instanceMethodsInvokers.FirstOrDefault(m => m.Attribute.MethodName == name)
                             .TargetMethod.Invoke(this, new object[] { messages });
                         break;
-                }                
+                }
             else
             {
                 _host.SendMessagesToModule(_uid, uidFrom, UNSUPPORTFLAG, messages);
@@ -114,7 +114,7 @@ namespace Dym
         {
             var module = _host.GetModuleLoadedInfos(uidFrom);
             var messageBuilder = new StringBuilder();
-            messageBuilder.AppendLine($"Name: {module.Value.FriendlyName}");            
+            messageBuilder.AppendLine($"Name: {module.Value.FriendlyName}");
             messageBuilder.AppendLine($"Module: {module.Value.Uid}");
             messageBuilder.AppendLine($"Session: {module.Value.SessionKey}");
             messageBuilder.AppendLine($"Message: {(message as List<TransportMessageBase>).Aggregate<TransportMessageBase, string>(null, (m1, m2) => (m1.IsNull() ? m1 : m1 + ", ") + m2)}");
@@ -150,8 +150,11 @@ namespace Dym
         public void PrintLog(string text, LogLevel logLevel = LogLevel.Info)
         {
             var logBuilder = new StringBuilder();
-            logBuilder.Append($"{_ownHash?.ToShortStr(10)}");
-            logBuilder.Append("|");
+            if (!_ownHash.IsNull())
+            {
+                logBuilder.Append($"{_ownHash.ToShortStr(10)}");
+                logBuilder.Append("|");
+            }
             logBuilder.Append($"{SessionKey}");
             logBuilder.Append("|");
             logBuilder.Append($"{FriendlyName}");
