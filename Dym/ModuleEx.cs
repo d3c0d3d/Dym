@@ -150,7 +150,7 @@ namespace Dym
         public void PrintLog(string text, LogLevel logLevel = LogLevel.Info)
         {
             var logBuilder = new StringBuilder();
-            logBuilder.Append($"{_ownHash.ToShortStr(10)}");
+            logBuilder.Append($"{_ownHash?.ToShortStr(10)}");
             logBuilder.Append("|");
             logBuilder.Append($"{SessionKey}");
             logBuilder.Append("|");
